@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".home.CongoActivity">
+
+      <!--  <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_title" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="3"
+            android:background="@color/color_012169">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeuib"
+                android:gravity="center"
+                android:text="@string/_congratulation"
+                android:textAllCaps="true"
+                android:paddingTop="@dimen/dp30"
+                android:paddingBottom="@dimen/dp30"
+                android:textColor="@color/white_color"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_congratulation"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="You did it !!!"
+                android:layout_gravity="center"
+                android:textColor="@color/white_color"
+                android:textSize="32dp"
+                android:gravity="center"
+                android:fontFamily="@font/segoeuii"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp10"
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:background="@drawable/white_bg_layout"
+                android:padding="@dimen/sp18">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_yourscore"
+                    android:textColor="@color/color_000000"
+                    android:textSize="@dimen/sp18"
+                    android:fontFamily="@font/segoeuib"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="@string/_score"
+                    android:textColor="@color/color_012169"
+                    android:textSize="@dimen/dp30"
+                    android:fontFamily="@font/segoeuib" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_bg_layout"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:padding="@dimen/dp12"
+                android:layout_marginLeft="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp30"
+                android:layout_marginBottom="@dimen/dp10"
+                android:textColor="@color/color_000000"
+                android:fontFamily="@font/segoeuib"
+                android:text="@string/_backToHome"
+                android:textSize="@dimen/sp17"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

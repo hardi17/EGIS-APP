@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:keepScreenOn="true"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            tools:context=".user.LoginActivity"
+            tools:ignore="ScrollViewSize">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <LinearLayout
+                android:id="@+id/ll_logo_appName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/ic_sign_in" />
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="@dimen/dp10"-->
+                <!--                    android:layout_marginBottom="@dimen/dp10"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:text="@string/app_name"-->
+                <!--                    android:textColor="@color/colorPrimary"-->
+                <!--                    android:textSize="@dimen/sp18" />-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_email_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginRight="@dimen/dp20"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/segoeuib"
+                    android:paddingLeft="@dimen/dp2"
+                    android:paddingBottom="@dimen/dp8"
+                    android:text="@string/_email"
+                    android:textColor="@color/color_012169"
+                    android:textSize="@dimen/sp15" />
+
+                <EditText
+                    android:id="@+id/edit_loginActivity_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edit_text_bg"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center_vertical"
+                    android:hint="@string/_enter_email"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/sp12"
+                    android:textColor="@color/color_012169"
+                    android:textColorHint="@color/color_4D1a1a1a"
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tv_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/segoeuib"
+                    android:paddingLeft="@dimen/dp2"
+                    android:paddingTop="@dimen/dp10"
+                    android:text="@string/_password"
+                    android:textColor="@color/color_012169"
+                    android:textSize="@dimen/sp15" />
+
+                <EditText
+                    android:id="@+id/edit_loginActivity_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:background="@drawable/edit_text_bg"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="start"
+                    android:hint="@string/_enter_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/dp12"
+                    android:textColor="@color/color_012169"
+                    android:textColorHint="@color/color_4D1a1a1a"
+                    android:textSize="@dimen/sp14" />
+
+                <TextView
+                    android:id="@+id/tv_LoginActivity_forgotPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:fontFamily="@font/segoeuib"
+                    android:padding="3dp"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/color_012169"
+                    android:textSize="@dimen/sp16" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_LoginActivity_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp25"
+                    android:layout_marginRight="@dimen/dp25"
+                    android:background="@drawable/blue_bg_layout"
+                    android:fontFamily="@font/segoeuib"
+                    android:gravity="center"
+                    android:padding="@dimen/sp11"
+                    android:text="@string/_login"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/sp15" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp12"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_LoginActivity_dntHaveAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeuib"
+                    android:text="@string/dont_have_account"
+                    android:textColor="@color/color_012169"
+                    android:textSize="@dimen/sp16" />
+
+                <TextView
+                    android:id="@+id/txt_LoginActivity_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeuib"
+                    android:paddingStart="@dimen/dp5"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/_signup"
+                    android:textColor="@color/color_000000"
+                    android:textSize="@dimen/sp16" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

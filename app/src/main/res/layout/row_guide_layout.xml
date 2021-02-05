@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="@dimen/dp5"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:id="@+id/ll_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp5">
+
+                <RelativeLayout
+                    android:layout_width="155dp"
+                    android:layout_height="160dp">
+
+                    <ImageView
+                        android:id="@+id/iv_guideImage"
+                        android:layout_width="115dp"
+                        android:layout_height="115dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/placeholder_image" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_image"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="@dimen/dp5"
+                        app:cardElevation="2dp">
+
+                        <TextView
+                            android:id="@+id/tv_title"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/white_bg"
+                            android:padding="@dimen/dp10"
+                            android:gravity="center"
+                            android:textSize="@dimen/sp15"
+                            android:fontFamily="@font/segoeuib"
+                            android:textColor="@color/color_012169"
+                            android:text="Road Sign" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_012169"
+                    android:text="@string/dummy_text"
+                    android:textSize="@dimen/sp17"
+                    android:maxLines="6"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:fontFamily="@font/segoeui"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,136 @@
+<resources>
+    <string name="app_name">England Guide : International Students</string>
+    <string name="app_name_short">EGIS</string>
+
+    <!--Map key-->
+    <string name="google_maps_key">AIzaSyCPR3q-cCserE9cyVUaafSCR-EFVwHFZ8E</string>
+
+    <!--login-signup-->
+    <string name="_welcomeToEnglandGuide">Welcome To England Guide</string>
+    <string name="_login">Sign In</string>
+    <string name="_signup">Sign Up</string>
+    <string name="_editProfile">Edit Profile</string>
+    <string name="_updateProfile">Update Profile</string>
+    <string name="_enter_email">Enter your email address</string>
+    <string name="_password">Password</string>
+    <string name="gallery">Gallery</string>
+    <string name="select_image_option">Select Photo Option</string>
+    <string name="_confirmpassword">Confirm Password</string>
+    <string name="_enter_password">Enter Password</string>
+    <string name="_change_password">Change Password</string>
+    <string name="_enter_confirm_password">Enter Confirm Password</string>
+    <string name="_enterVerifyCode">Enter Verify Code</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="dont_have_account">Dont\'t have an account?</string>
+    <string name="forgotPassword">Forgot Password</string>
+    <string name="email_address">Email address</string>
+    <string name="_email">Email</string>
+    <string name="send">Send</string>
+    <string name="next">Next</string>
+    <string name="submit">Submit</string>
+    <string name="_verify">Verify</string>
+    <string name="_verificationCode">Verification Code</string>
+    <string name="_dateOfBirth">Date Of Birth</string>
+    <string name="_phoneNo">Phone Number</string>
+    <string name="_enterphoneNo">Enter Your Phone Number</string>
+    <string name="_firstName">First Name</string>
+    <string name="_lastName">Last Name</string>
+    <string name="create_An_Account">Create an account</string>
+    <string name="whats_ur_first_name">What\'s your first name, stranger?</string>
+    <string name="whats_ur_last_name">What\'s your last name?</string>
+    <string name="whats_ur_gender">What\'s your Gender?</string>
+    <string name="when_were_birth">When were you born?</string>
+    <string name="_enterBirthDay">Enter Your Birthday</string>
+    <string name="password_inst">Please enter your registered email address. We will send you instructions to reset your password.</string>
+
+    <!--travel-->
+    <string name="_time">Time</string>
+    <string name="_distance">Distance</string>
+    <string name="_by">By</string>
+    <string name="_destination">Destination :</string>
+    <string name="_from">From</string>
+    <string name="_to">To</string>
+    <string name="_modeOfTransportation">Mode Of Transportation</string>
+    <string name="_listOfRoutes">List of routes available</string>
+    <string name="_doYouWantToTest">Do you want to check your knowledge ?</string>
+    <string name="_whereDoYouToTravel">Where do you want to travel?</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros,
+                            pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus.
+                            Donec scelerisque sollicitudin enim eu venenatis. </string>
+
+    <string-array name="travelOption">
+        <item>Walk</item>
+        <item>Railway</item>
+        <item>Bicycle</item>
+        <item>Car</item>
+        <item>Bus</item>
+    </string-array>
+
+    <!--menu title-->
+    <string name="_skip">SKIP</string>
+    <string name="_home">Home</string>
+    <string name="_travel">Travel</string>
+    <string name="_trafficSignals">Traffic Signals Guide</string>
+    <string name="_airports">Airports</string>
+    <string name="_bins">Bins</string>
+    <string name="_groceryShops">Grocery Store</string>
+    <string name="_currency">Currency Guide</string>
+    <string name="_wasteManage">Waste Management</string>
+    <string name="_accomodationsFinder">Accommodation</string>
+    <string name="_nhs">NHS near by</string>
+    <string name="_niNo">NI number guidelines</string>
+    <string name="_famousSpots">Famous Spots In UK</string>
+    <string name="_AreYouLookingForFamousSpot">Are you looking for Famous Spot?</string>
+    <string name="_logout">Logout</string>
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="navigation_drawer_close">Drawer Close</string>
+    <string name="_help">Help</string>
+    <string name="aboutus">About US</string>
+    <string name="contactUs">Contact Us</string>
+    <string name="terms_condition">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="_coin">Coin</string>
+    <string name="_notes">Notes</string>
+    <string name="_congratulation">Congratulation</string>
+    <string name="_yourscore">Your Score</string>
+    <string name="_backToHome">Back To Home</string>
+    <string name="_score"> %1$s / 10</string>
+    <string name="_quiz">Quiz</string>
+    <string name="_previous">Previous</string>
+    <string name="_next">Next</string>
+    <string name="_Map">Map</string>
+    <string name="search_places_or_addresses">Search places or addresses</string>
+
+
+    <!--validation messgage-->
+    <string name="please_enter_your_phoneNo">Please enter your phone no</string>
+    <string name="please_enter_your_birthdate">Please enter your birth date</string>
+    <string name="please_enter_your_first_name">Please enter your first name</string>
+    <string name="please_enter_your_last_name">Please enter your last name</string>
+    <string name="please_enter_your_email_address">Please enter your email address</string>
+    <string name="please_enter_valid_email_address">Please enter a valid email</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="password_cannot_be_less_than_six_characters">Password cannot be less than 6 characters</string>
+    <string name="confirm_password_is_wrong">Confirm does\'t match with password</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
+    <string name="are_you_sure_you_want_to_logout">Are you sure want to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="camera">Camera</string>
+    <string name="done">Done</string>
+    <string name="crop">Crop Image</string>
+    <string name="save">Save</string>
+    <string name="less_than_20mb">Less than 20mb</string>
+    <string name="app_name_image">Guide Image</string>
+    <string name="Guide_videos">Guide Videos</string>
+    <string name="select_video">Select Video</string>
+    <string name="Guide_image">Guide Image</string>
+    <string name="select_image">Select Image</string>
+    <string name="allow_permission_settings">Allow permission settings</string>
+    <string name="settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="go_back">Go Back</string>
+
+</resources>

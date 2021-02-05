@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rl_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="@dimen/dp5"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:id="@+id/ll_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp10">
+
+                <ImageView
+                    android:id="@+id/iv_spotdImage"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:src="@drawable/placeholder_image" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp5"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_placeName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoeuib"
+                            android:padding="4dp"
+                            android:text="Big Ben"
+                            android:textColor="@color/color_1E1E1E"
+                            android:textSize="@dimen/sp18" />
+
+                        <TextView
+                            android:id="@+id/tv_placeDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoeuib"
+                            android:paddingLeft="@dimen/dp5"
+                            android:maxLines="3"
+                            android:text="London's iconic \n national \ntimepiece"
+                            android:textColor="@color/color_1E1E1E"
+                            android:textSize="@dimen/sp13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/dp5"
+                            android:paddingRight="@dimen/dp5"
+                            android:text="4.4"
+                            android:textColor="@color/color_1E1E1E"
+                            android:textSize="@dimen/sp15" />
+
+                        <RatingBar
+                            android:id="@+id/ratingbar_spots"
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:rating="0"
+                            android:stepSize="1"
+                            android:progressDrawable="@drawable/rating_display" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:theme="@style/AppTheme"
+            android:background="#80000000">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/dp12"
+                android:elevation="@dimen/dp15"
+                app:cardCornerRadius="@dimen/dp7">
+
+                <RelativeLayout
+                    android:id="@+id/linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/sp15">
+
+                    <TextView
+                        android:id="@+id/tv_dialouge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:fontFamily="@font/seguisb"
+                        android:text="@string/are_you_sure_you_want_to_logout"
+                        android:textColor="@color/color_012169"
+                        android:textSize="@dimen/sp20" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_dialouge"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:padding="@dimen/dp8"
+                        android:gravity="center">
+
+                        <RelativeLayout
+                            android:id="@+id/relative_dialouge_LoginActivity_yes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp10"
+                            android:background="?attr/selectableItemBackgroundBorderless">
+
+                            <TextView
+                                android:id="@+id/tv_dialouge_yes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:ems="6"
+                                android:gravity="center"
+                                android:text="@string/yes"
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/sp17" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relative_dialouge_LoginActivity_cancel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dp5"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:padding="@dimen/dp10"
+                            android:background="?attr/selectableItemBackgroundBorderless">
+
+                            <TextView
+                                android:id="@+id/tv_dialouge_cancel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:ems="6"
+                                android:gravity="center"
+                                android:text="@string/cancel"
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/sp17" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

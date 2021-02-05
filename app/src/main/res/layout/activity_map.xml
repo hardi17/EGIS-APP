@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".home.MapActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/done_toolbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar">
+
+            <FrameLayout
+                android:id="@+id/fl_GoogleMapActivity_map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/rl_MapActivity_SearchView" />
+
+            <ImageView
+                android:id="@+id/img_GoogleMapActivity_marker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_mic" />
+
+            <RelativeLayout
+                android:id="@+id/rl_MapActivity_SearchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_4D1a1a1a"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/rl_autocomplete_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/white_bg_layout"
+                    android:elevation="4dp"
+                    android:padding="2dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actv_GoogleMapActivity_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp5"
+                        android:layout_marginRight="@dimen/dp5"
+                        android:layout_toStartOf="@+id/img_mapActivity_clearData"
+                        android:layout_toLeftOf="@+id/img_mapActivity_clearData"
+                        android:background="@android:color/transparent"
+                        android:drawablePadding="5dp"
+                        android:hint="@string/search_places_or_addresses"
+                        android:imeOptions="actionDone"
+                        android:inputType="textCapSentences"
+                        android:maxLines="1"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColor="@color/color_000000"
+                        android:textColorHint="@color/color_000000"
+                        android:textSize="@dimen/sp13" />
+
+
+                    <ImageView
+                        android:id="@+id/img_mapActivity_clearData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/dp10"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_close"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_MapActivity_viewMapAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/white_bg"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_MapActivity_viewMapAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_mic"
+                    android:drawablePadding="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:padding="10dp"
+                    android:text="Address"
+                    android:textColor="@color/color_000000"
+                    android:textSize="14sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_detail_path"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:visibility="visible">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp10"
+                    app:cardCornerRadius="@dimen/dp5"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp10"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_locationName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoeuib"
+                            android:text="Kingston Upon Thames,UK "
+                            android:textColor="@color/color_000000"
+                            android:textSize="20dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp10"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoeui"
+                                        android:text="@string/_time"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/color_939597"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_time_value"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp3"
+                                        android:fontFamily="@font/seguisb"
+                                        android:text="25 min"
+                                        android:textColor="@color/color_012169"
+                                        android:textSize="18dp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="@dimen/dp10"
+                                    android:background="@color/color_4D1a1a1a" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_distnace"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoeui"
+                                        android:text="@string/_distance"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/color_939597"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_distnace_value"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp3"
+                                        android:fontFamily="@font/seguisb"
+                                        android:text="9.4 km"
+                                        android:textColor="@color/color_012169"
+                                        android:textSize="18dp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="@dimen/dp5"
+                                    android:background="@color/color_4D1a1a1a" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_by"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoeui"
+                                        android:text="@string/_by"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/color_939597"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_by_value"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp3"
+                                        android:fontFamily="@font/seguisb"
+                                        android:text="Car"
+                                        android:textColor="@color/color_012169"
+                                        android:textSize="18dp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_navigate_map"
+                                android:layout_width="50dp"
+                                android:layout_height="@dimen/dp50"
+                                android:layout_marginLeft="@dimen/dp10"
+                                android:layout_marginRight="@dimen/dp10"
+                                android:background="@drawable/rect_blue">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/backward_arrow_1"
+                                    android:backgroundTint="@color/white_color" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

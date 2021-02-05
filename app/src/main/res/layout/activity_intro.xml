@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".user.IntroActivity">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:src="@drawable/splash_screen_logo" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginRight="@dimen/dp10"
+                android:fontFamily="@font/segoeuib"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:text="@string/app_name"
+                android:textColor="@color/color_012169"
+                android:textSize="@dimen/dp25" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true" />
+
+            <LinearLayout
+                android:id="@+id/ll_vp_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_login_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="15dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/white_bg_layout"
+                android:fontFamily="@font/segoeuib"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/_login"
+                android:textColor="@color/color_012169"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:id="@+id/tv_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/blue_bg_layout"
+                android:fontFamily="@font/segoeuib"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/_signup"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/sp15" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp10"
+            android:drawableEnd="@drawable/ic_arrow"
+            android:drawableRight="@drawable/ic_arrow"
+            android:drawablePadding="@dimen/dp5"
+            android:fontFamily="@font/segoeuib"
+            android:gravity="center_vertical"
+            android:text="@string/_skip"
+            android:textColor="@color/color_012169"
+            android:textSize="@dimen/dp15" />
+
+    </RelativeLayout>
+</layout>

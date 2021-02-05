@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".home.CurrencyActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_coin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/seguisb"
+                    android:gravity="center"
+                    android:padding="@dimen/dp10"
+                    android:text="@string/_coin"
+                    android:textColor="@color/color_012169"
+                    android:textSize="@dimen/sp20" />
+
+                <View
+                    android:id="@+id/viewCoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_012169" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/seguisb"
+                    android:gravity="center"
+                    android:padding="@dimen/dp10"
+                    android:text="@string/_notes"
+                    android:textColor="@color/color_939597"
+                    android:textSize="@dimen/sp20" />
+
+                <View
+                    android:id="@+id/viewNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_012169"
+                    android:visibility="invisible" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <com.studentguide.utils.CustomViewPager
+            android:id="@+id/customVP"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

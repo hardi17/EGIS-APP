@@ -298,7 +298,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     String name = firstName + " " + lastName;
-                    updateUserAccount(name,dob,email,password, mCurrentUser);
+                    updateUserAccount(name,dob,email, mCurrentUser);
                 }
                 else{
                     ParentObj.snackBarView.snackBarShowRed(SignupActivity.this, task.getException().getMessage());
@@ -310,7 +310,7 @@ public class SignupActivity extends AppCompatActivity {
     /*
     * Method to update information of the user and push the user information into Firebase Realtime Database
     * */
-    private void updateUserAccount(String name, String dob, String email,String password, FirebaseUser mCurrentUser){
+    private void updateUserAccount(String name, String dob, String email, FirebaseUser mCurrentUser){
 
 
         if (isProfileImage) {
@@ -342,7 +342,6 @@ public class SignupActivity extends AppCompatActivity {
                                         data.put("profile_img",uri);
                                         data.put("dob", dob);
                                         data.put("email", email);
-                                        data.put("password", password);
                                         dbReference.child(mCurrentUser.getUid()).setValue(data);
 
                                         ParentObj.snackBarView.snackBarShow(SignupActivity.this, "User Registered!");
@@ -365,7 +364,6 @@ public class SignupActivity extends AppCompatActivity {
             data.put("fullName", name);
             data.put("dob", dob);
             data.put("email", email);
-            data.put("password", password);
             dbReference.child(mCurrentUser.getUid()).setValue(data);
 
             ParentObj.snackBarView.snackBarShow(SignupActivity.this, "User Registered!");

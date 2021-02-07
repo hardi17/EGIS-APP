@@ -25,9 +25,9 @@ public class SdcardUtils {
     public static File CROPED_IMAGE_PATH = null;
     public static File CROPED_IMAGE_THUMB = null;
 
-    public static String TRICE_IMAGE_THUMB = ".Letsgosocial/Thumb";
-    public static String TRICE_IMAGE_IMAGES = ".Letsgosocial/Images";
-    public static String TRICE_VIDEO = ".Letsgosocial/Video";
+    public static String TRICE_IMAGE_THUMB = ".GuideImage/Thumb";
+    public static String TRICE_IMAGE_IMAGES = ".GuideImage/Images";
+    public static String TRICE_VIDEO = ".GuideImage/Video";
 
 
     /**

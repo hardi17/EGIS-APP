@@ -48,8 +48,8 @@ public class NotesFragment extends Fragment {
 
     private void initView() {
         binding.rcvNote.setLayoutManager(new LinearLayoutManager(activity));
-        adapter = new TravelSignalWasteGuideAdapter(activity, false, false, false, true);
-        binding.rcvNote.setAdapter(adapter);
+//        adapter = new TravelSignalWasteGuideAdapter(activity, false, false, false, true);
+//        binding.rcvNote.setAdapter(adapter);
     }
 
     @Override

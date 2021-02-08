@@ -49,8 +49,8 @@ public class CoinsFragment extends Fragment {
 
     private void initView() {
         binding.rcvCoins.setLayoutManager(new LinearLayoutManager(activity));
-        adapter = new TravelSignalWasteGuideAdapter(activity, false, false,true,false);
-        binding.rcvCoins.setAdapter(adapter);
+//        adapter = new TravelSignalWasteGuideAdapter(activity, false, false,true,false);
+//        binding.rcvCoins.setAdapter(adapter);
     }
 
     @Override

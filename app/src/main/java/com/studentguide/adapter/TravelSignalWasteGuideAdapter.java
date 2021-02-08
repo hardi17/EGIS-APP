@@ -9,8 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.studentguide.R;
 import com.studentguide.databinding.RowGuideLayoutBinding;
+import com.studentguide.models.ModelTrafficSignal;
+import com.studentguide.models.ModelWasteManagement;
+
+import java.util.List;
 
 
 public class TravelSignalWasteGuideAdapter extends RecyclerView.Adapter<TravelSignalWasteGuideAdapter.ViewHolder> {
@@ -21,13 +26,18 @@ public class TravelSignalWasteGuideAdapter extends RecyclerView.Adapter<TravelSi
             isNote = false,
             isCoin = false;
 
+    List<ModelTrafficSignal> MTS;
+    List<ModelWasteManagement> MWM;
 
-    public TravelSignalWasteGuideAdapter(Context context, boolean isTraffic, boolean isWaste,boolean isCoin,boolean isNote) {
+
+    public TravelSignalWasteGuideAdapter(Context context, boolean isTraffic, boolean isWaste, boolean isNote, boolean isCoin, List<ModelTrafficSignal> MTS, List<ModelWasteManagement> MWM) {
         this.context = context;
         this.isTraffic = isTraffic;
         this.isWaste = isWaste;
-        this.isCoin = isCoin;
         this.isNote = isNote;
+        this.isCoin = isCoin;
+        this.MTS = MTS;
+        this.MWM = MWM;
     }
 
     @NonNull
@@ -41,9 +51,14 @@ public class TravelSignalWasteGuideAdapter extends RecyclerView.Adapter<TravelSi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         if (isTraffic) {
-            holder.binding.tvTitle.setText("Road Sign");
+            ModelTrafficSignal model = MTS.get(position);
+            holder.binding.tvTitle.setText(MTS.get(position).getSignalTitle());
+            holder.binding.tvDetail.setText(MTS.get(position).getSignalDesc());
+            Glide.with(context).load(MTS.get(position).getSignalImage()).into(holder.binding.ivGuideImage);
         } else if(isWaste){
-            holder.binding.tvTitle.setText("Medical Waste");
+            holder.binding.tvTitle.setText(MWM.get(position).getBinName());
+            holder.binding.tvDetail.setText(MWM.get(position).getBinDesc());
+            Glide.with(context).load(MWM.get(position).getBinImage()).into(holder.binding.ivGuideImage);
         }else if(isCoin){
             holder.binding.tvTitle.setText("1 Pound");
         } else {
@@ -53,7 +68,12 @@ public class TravelSignalWasteGuideAdapter extends RecyclerView.Adapter<TravelSi
 
     @Override
     public int getItemCount() {
-        return 5;
+        if(isTraffic){
+            return MTS.size();
+        }
+        else{
+            return MWM.size();
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

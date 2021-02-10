@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.studentguide.R;
 import com.studentguide.databinding.RowGuideLayoutBinding;
+import com.studentguide.models.CoinsNotesModel;
 import com.studentguide.models.ModelTrafficSignal;
 import com.studentguide.models.ModelWasteManagement;
 
@@ -28,9 +29,10 @@ public class TravelSignalWasteGuideAdapter extends RecyclerView.Adapter<TravelSi
 
     List<ModelTrafficSignal> MTS;
     List<ModelWasteManagement> MWM;
+    List<CoinsNotesModel> CNM;
 
 
-    public TravelSignalWasteGuideAdapter(Context context, boolean isTraffic, boolean isWaste, boolean isNote, boolean isCoin, List<ModelTrafficSignal> MTS, List<ModelWasteManagement> MWM) {
+    public TravelSignalWasteGuideAdapter(Context context, boolean isTraffic, boolean isWaste, boolean isNote, boolean isCoin, List<ModelTrafficSignal> MTS, List<ModelWasteManagement> MWM, List<CoinsNotesModel> CNM) {
         this.context = context;
         this.isTraffic = isTraffic;
         this.isWaste = isWaste;
@@ -38,6 +40,7 @@ public class TravelSignalWasteGuideAdapter extends RecyclerView.Adapter<TravelSi
         this.isCoin = isCoin;
         this.MTS = MTS;
         this.MWM = MWM;
+        this.CNM = CNM;
     }
 
     @NonNull
@@ -60,9 +63,13 @@ public class TravelSignalWasteGuideAdapter extends RecyclerView.Adapter<TravelSi
             holder.binding.tvDetail.setText(MWM.get(position).getBinDesc());
             Glide.with(context).load(MWM.get(position).getBinImage()).into(holder.binding.ivGuideImage);
         }else if(isCoin){
-            holder.binding.tvTitle.setText("1 Pound");
+            holder.binding.tvTitle.setText(CNM.get(position).getCoinName());
+            holder.binding.tvDetail.setText(CNM.get(position).getCoinDesc());
+            Glide.with(context).load(CNM.get(position).getCoinImage()).into(holder.binding.ivGuideImage);
         } else {
-            holder.binding.tvTitle.setText("10 Pound");
+            holder.binding.tvTitle.setText(CNM.get(position).getNoteName());
+            holder.binding.tvDetail.setText(CNM.get(position).getNoteDesc());
+            Glide.with(context).load(CNM.get(position).getNoteImage()).into(holder.binding.ivGuideImage);
         }
     }
 
@@ -71,8 +78,11 @@ public class TravelSignalWasteGuideAdapter extends RecyclerView.Adapter<TravelSi
         if(isTraffic){
             return MTS.size();
         }
-        else{
+        else if(isWaste){
             return MWM.size();
+        }
+        else{
+            return CNM.size();
         }
     }
 

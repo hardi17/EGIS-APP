@@ -62,7 +62,7 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
 
     private void setRecyclerView() {
         binding.rcvTravelSignals.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TravelSignalWasteGuideAdapter(this, isTraffic, isWaste, false, false,modelTrafficSignalList,modelWasteManagementList);
+        adapter = new TravelSignalWasteGuideAdapter(this, isTraffic, isWaste, false, false,modelTrafficSignalList,modelWasteManagementList,null);
         binding.rcvTravelSignals.setAdapter(adapter);
     }
 

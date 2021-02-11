@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +20,7 @@ import com.studentguide.adapter.TravelSignalWasteGuideAdapter;
 import com.studentguide.databinding.ActivityGuideBinding;
 import com.studentguide.models.ModelTrafficSignal;
 import com.studentguide.models.ModelWasteManagement;
+import com.studentguide.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +91,7 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
                 }
             });
         } else {
+            isWaste = true;
             binding.toolbar.txtTitle.setText(R.string._wasteManage);
             mReference = mDatabase.getReference("wasteManagment");
             //
@@ -119,7 +122,7 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
 
     @OnClick(R.id.tv_checkKnowledge)
     public void checkYourknowledge() {
-        startActivity(new Intent(this, QuestionAnsActivity.class));
+        startActivity(new Intent(this, QuestionAnsActivity.class).putExtra("isTraffic",isTraffic).putExtra("isWaste",isWaste));
     }
 
 

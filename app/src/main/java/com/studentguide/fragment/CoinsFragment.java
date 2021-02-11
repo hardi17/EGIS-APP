@@ -1,5 +1,6 @@
 package com.studentguide.fragment;
 
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -42,6 +44,8 @@ public class CoinsFragment extends Fragment {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     List<CoinsNotesModel> coinsNotesModelList;
+    //
+    boolean isTraffic,isWaste;
 
     public CoinsFragment() {
         // Required empty public constructor
@@ -57,6 +61,9 @@ public class CoinsFragment extends Fragment {
         unbinder = ButterKnife.bind(activity);
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference("coins");
+        //
+        isTraffic = false;
+        isWaste = false;
 
         initView();
 

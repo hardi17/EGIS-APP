@@ -11,13 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.studentguide.R;
 import com.studentguide.databinding.RawOptionLayoutBinding;
+import com.studentguide.models.ModelOptions;
+
+import java.util.List;
 
 public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.ViewHolder> {
 
     Context context;
+    List<ModelOptions> MOL;
 
-    public OptionsAdapter(Context context) {
+    public OptionsAdapter(Context context, List<ModelOptions> MOL) {
         this.context = context;
+        this.MOL = MOL;
     }
 
     @NonNull
@@ -29,12 +34,13 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull OptionsAdapter.ViewHolder holder, int position) {
-
+            ModelOptions model = MOL.get(position);
+            holder.binding.tvOptions.setText(model.getOption());
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return MOL.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

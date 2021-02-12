@@ -1,6 +1,8 @@
 package com.studentguide.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,7 @@ import com.studentguide.home.QuestionAnsActivity;
 import com.studentguide.models.ModelOptions;
 import com.studentguide.models.ModelQuiz;
 import com.studentguide.utils.Logger;
+import com.studentguide.utils.MyPref;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,14 +58,16 @@ public class QueAnsFragment extends Fragment {
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
     List<ModelOptions> modelOptionsList;
-
+    //
+    public static Integer score;
     public QueAnsFragment() {
         // Required empty public constructor
     }
 
-    public static QueAnsFragment newInstance(QuestionAnsActivity activity, int offset,boolean isTraffic,boolean isWaste) {
+    public static QueAnsFragment newInstance(QuestionAnsActivity activity, int offset,boolean isTraffic,boolean isWaste,Integer score) {
         Bundle args = new Bundle();
         args.putInt("offset", offset);
+        args.putInt("score", score);
         args.putBoolean("isTraffic",isTraffic);
         args.putBoolean("isWaste",isWaste);
         QueAnsFragment fragment = new QueAnsFragment();
@@ -87,6 +92,7 @@ public class QueAnsFragment extends Fragment {
             offset = getArguments().getInt("offset");
             isTraffic = getArguments().getBoolean("isTraffic");
             isWaste = getArguments().getBoolean("isWaste");
+            score = getArguments().getInt("score");
         }
 
         if(isTraffic){
@@ -108,7 +114,7 @@ public class QueAnsFragment extends Fragment {
 
     private void setRecyclerView(){
         binding.rcvOptions.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.VERTICAL, false));
-        adapter = new OptionsAdapter(activity,modelOptionsList);
+        adapter = new OptionsAdapter(activity,modelOptionsList,activity);
         binding.rcvOptions.setAdapter(adapter);
     }
 
@@ -138,6 +144,13 @@ public class QueAnsFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     ModelQuiz modelQuiz = snapshot.getValue(ModelQuiz.class);
+                    //
+                    //
+                    SharedPreferences ANS = getActivity().getSharedPreferences("QuizAns", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = ANS.edit();
+                    editor.putString("answer",modelQuiz.getAnswer());
+                    editor.putInt("score",score);
+                    editor.apply();
                     binding.tvQuestion.setText(modelQuiz.getQuestion());
                     //
                     binding.tvTwoImg.setVisibility(View.GONE);
@@ -177,6 +190,12 @@ public class QueAnsFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     ModelQuiz modelQuiz = snapshot.getValue(ModelQuiz.class);
+                    //
+                    SharedPreferences ANS = getActivity().getSharedPreferences("QuizAns", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = ANS.edit();
+                    editor.putString("answer",modelQuiz.getAnswer());
+                    editor.putInt("score",score);
+                    editor.apply();
                     binding.tvQuestion.setText(modelQuiz.getQuestion());
                     //
                     binding.tvTwoImg.setVisibility(View.GONE);
@@ -215,6 +234,11 @@ public class QueAnsFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     ModelQuiz modelQuiz = snapshot.getValue(ModelQuiz.class);
+                    SharedPreferences ANS = getActivity().getSharedPreferences("QuizAns", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = ANS.edit();
+                    editor.putString("answer",modelQuiz.getAnswer());
+                    editor.putInt("score",score);
+                    editor.apply();
                     binding.tvQuestion.setText(modelQuiz.getQuestion());
                     //
                     binding.tvTwoImg.setVisibility(View.GONE);
@@ -253,6 +277,11 @@ public class QueAnsFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     ModelQuiz modelQuiz = snapshot.getValue(ModelQuiz.class);
+                    SharedPreferences ANS = getActivity().getSharedPreferences("QuizAns", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = ANS.edit();
+                    editor.putString("answer",modelQuiz.getAnswer());
+                    editor.putInt("score",score);
+                    editor.apply();
                     binding.tvQuestion.setText(modelQuiz.getQuestion());
                     //
                     binding.tvTwoImg.setVisibility(View.GONE);
@@ -296,6 +325,12 @@ public class QueAnsFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     ModelQuiz modelQuiz = snapshot.getValue(ModelQuiz.class);
+                    SharedPreferences ANS = getActivity().getSharedPreferences("QuizAns", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = ANS.edit();
+                    editor.putString("answer",modelQuiz.getAnswer());
+                    editor.putInt("score",score);
+                    Logger.d(String.valueOf(score));
+                    editor.apply();
                     binding.tvQuestion.setText(modelQuiz.getQuestion());
                     //
                     binding.tvTwoImg.setVisibility(View.GONE);
@@ -320,27 +355,38 @@ public class QueAnsFragment extends Fragment {
 
     @OnClick(R.id.tv_next)
     public void changeQuestion() {
+        MyPref myPref = new MyPref(activity);
         if (offset <= 4) {
             offset++;
+            myPref.setData(MyPref.Keys.Score, score);
             FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment, QueAnsFragment.newInstance(activity, offset,isTraffic,isWaste));
+            ft.replace(R.id.fragment, QueAnsFragment.newInstance(activity, offset,isTraffic,isWaste,score));
+            Logger.d(String.valueOf(score));
             ft.addToBackStack(null);
             ft.commit();
         } else {
+            myPref.setData(MyPref.Keys.Score, score);
+            SharedPreferences ANS = getActivity().getSharedPreferences("QuizAns", Context.MODE_PRIVATE);
+            Logger.d(String.valueOf(score));
+            Integer Score = ANS.getInt("score",0);
+            Logger.d(String.valueOf(Score));
             activity.finish();
-            startActivity(new Intent(activity, CongoActivity.class));
+            startActivity(new Intent(activity, CongoActivity.class).putExtra("score",Score));
         }
     }
 
     @OnClick(R.id.tv_previous)
     public void changePrevQuestion() {
+        MyPref myPref = new MyPref(activity);
         if (offset >= 2 && offset < 5) {
             offset--;
+            myPref.setData(MyPref.Keys.Score, score);
             FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment, QueAnsFragment.newInstance(activity, offset,isTraffic,isWaste));
+            ft.replace(R.id.fragment, QueAnsFragment.newInstance(activity, offset,isTraffic,isWaste,score));
             ft.addToBackStack(null);
             ft.commit();
         } else {
+            myPref.setData(MyPref.Keys.Score, score);
             activity.finish();
         }
     }

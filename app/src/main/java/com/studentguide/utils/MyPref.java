@@ -45,6 +45,11 @@ public class MyPref {
         editor.commit();
     }
 
+    public void setData(Keys keys, Integer isData) {
+        editor.putInt(keys.name(), isData);
+        editor.commit();
+    }
+
     public void clearPrefs() {
         editor = preferences.edit();
         editor.clear();
@@ -59,9 +64,14 @@ public class MyPref {
         return preferences.getBoolean(keys.name(), defaults);
     }
 
+    public Integer getData(Keys keys, Integer defaults) {
+        return preferences.getInt(keys.name(), defaults);
+    }
+
     public enum Keys {
         Lat,
         Lng,
-        Location
+        Location,
+        Score
     }
 }

@@ -23,6 +23,10 @@ public class CongoActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_congo);
         ButterKnife.bind(this);
 
+        Integer score = getIntent().getIntExtra("score",0);
+        String scoreText = score.toString()+"/5";
+        binding.congoScore.setText(scoreText);
+
     }
 
 

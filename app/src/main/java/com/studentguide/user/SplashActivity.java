@@ -13,6 +13,7 @@ import com.studentguide.R;
 import com.studentguide.databinding.ActivityMainBinding;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -24,11 +25,12 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         ButterKnife.bind(this);
 
         startAnimation();
     }
+
 
     private void startAnimation() {
         Animation animZoomIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_in);
@@ -41,7 +43,6 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 startHandler();
-
             }
 
             @Override
@@ -53,14 +54,11 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void startHandler() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
-            }
-        },SPLASH_TIME);
+        handler.postDelayed(() -> {
+            Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }, SPLASH_TIME);
     }
 }

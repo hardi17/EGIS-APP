@@ -30,9 +30,6 @@ import com.studentguide.utils.Logger;
 import com.studentguide.utils.MyPref;
 
 
-/**
- * Created by prismetric on 3/17/2016.
- */
 public class GPSOnUtils implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -60,10 +57,7 @@ public class GPSOnUtils implements
     private Activity activity;
     private LocationChangeListener locationChangeListener;
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
     private GoogleApiClient client;
 
     public GPSOnUtils(Activity activity, LocationChangeListener locationChangeListener) {

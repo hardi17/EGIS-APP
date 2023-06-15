@@ -22,9 +22,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.studentguide.R;
 
 
-/**
- * A {@link BottomSheetDialogFragment}
- */
+
 @SuppressWarnings("validFragment")
 public class BottomSheetPermissionFragment extends BottomSheetDialogFragment {
     public static final String READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -81,12 +79,7 @@ public class BottomSheetPermissionFragment extends BottomSheetDialogFragment {
         super.onDismiss(dialog);
     }
 
-    /**
-     * Returns true if the Activity has access to all given permissions.
-     * Always returns true on platforms below M.
-     *
-     * @see Activity#checkSelfPermission(String)
-     */
+
     @TargetApi(Build.VERSION_CODES.M)
     public static boolean hasSelfPermission(Activity activity, String[] permissions) {
         // Below Android M all permissions are granted at install time and are already available.

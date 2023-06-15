@@ -29,18 +29,10 @@ import android.os.Build;
 import com.studentguide.R;
 
 
-/**
- * Utility class that wraps access to the runtime permissions API in M and provides basic helper
- * methods.
- */
+
 public abstract class PermissionUtils {
 
-    /**
-     * Check that all given permissions have been granted by verifying that each entry in the
-     * given array is of the value {@link PackageManager#PERMISSION_GRANTED}.
-     *
-     * @see Activity#onRequestPermissionsResult(int, String[], int[])
-     */
+
     public static boolean verifyPermissions(int[] grantResults) {
         // Verify that each required permission has been granted, otherwise return false.
         for (int result : grantResults) {
@@ -51,12 +43,6 @@ public abstract class PermissionUtils {
         return true;
     }
 
-    /**
-     * Returns true if the Activity has access to all given permissions.
-     * Always returns true on platforms below M.
-     *
-     * @see Activity#checkSelfPermission(String)
-     */
     @TargetApi(Build.VERSION_CODES.M)
     public static boolean hasSelfPermission(Activity activity, String[] permissions) {
         // Below Android M all permissions are granted at install time and are already available.
@@ -73,12 +59,7 @@ public abstract class PermissionUtils {
         return true;
     }
 
-    /**
-     * Returns true if the Activity has access to a given permission.
-     * Always returns true on platforms below M.
-     *
-     * @see Activity#checkSelfPermission(String)
-     */
+
     @TargetApi(Build.VERSION_CODES.M)
     public static boolean hasSelfPermission(Activity activity, String permission) {
         // Below Android M all permissions are granted at install time and are already available.

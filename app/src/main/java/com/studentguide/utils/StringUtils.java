@@ -5,9 +5,6 @@ import com.studentguide.ParentObj;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Prismetric on 9/4/2015.
- */
 public class StringUtils {
 
     public static boolean isNotEmpty(CharSequence str) {

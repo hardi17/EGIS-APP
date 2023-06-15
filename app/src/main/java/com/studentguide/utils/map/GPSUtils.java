@@ -31,13 +31,10 @@ import com.studentguide.utils.MyPref;
 import com.studentguide.utils.permissionutils.BottomSheetGpsStartUtils;
 
 
-/**
- * Created by Bhavesh on 3/17/2016.
- */
 public class GPSUtils implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        com.google.android.gms.location.LocationListener // NOTE: This location listener is from Play service
+        com.google.android.gms.location.LocationListener
 {
     public final static int REQUEST_GPS_ON_SETTINGS = 101;
 

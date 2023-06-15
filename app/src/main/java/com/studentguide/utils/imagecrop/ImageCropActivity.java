@@ -145,17 +145,12 @@ public class ImageCropActivity extends Activity implements OnClickListener {
         SdcardUtils.CROPED_IMAGE_THUMB = null;
         SdcardUtils.ORIGINAL_IMAGE_PATH = "";
         SdcardUtils.MEDIA_FILE_ORIGINAL = null;
-        //StaticData.mediapath = "";
+
         ImageCropActivity.this.finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
-    /**
-     * returns bitmap from path
-     *
-     * @param path image file path
-     * @return bitmap
-     */
+
     private Bitmap getBitmap(String path) {
 
         InputStream in = null;
@@ -180,8 +175,7 @@ public class ImageCropActivity extends Activity implements OnClickListener {
             if (scale > 1) {
 
                 scale--;
-                // scale to max possible inSampleSize that still yields an image
-                // larger than target
+
                 o = new BitmapFactory.Options();
                 o.inPreferredConfig = Bitmap.Config.RGB_565;
                 o.inSampleSize = scale;
@@ -235,10 +229,7 @@ public class ImageCropActivity extends Activity implements OnClickListener {
     }
 
 
-    /**
-     * @param size file size in long
-     * @return file size in string
-     */
+
     public static String readableFileSize(long size) {
         if (size <= 0) return "0";
         final String[] units = new String[]{"B", "kB", "MB", "GB", "TB"};
@@ -288,9 +279,7 @@ public class ImageCropActivity extends Activity implements OnClickListener {
                     Logger.v("after_croppedgetWidth:" + "" + croppedImage.getWidth());
                     Logger.v("after_croppedgetHeight:" + "" + croppedImage.getHeight());
 
-                    // ==============================================================
-                    // Image
-                    // =====================================typeface_Montserrat_SemiBold=========================
+
                     File imageFile = SdcardUtils.returnImageFileName();
                     try {
                         FileOutputStream out = new FileOutputStream(imageFile);
@@ -302,20 +291,9 @@ public class ImageCropActivity extends Activity implements OnClickListener {
 
                     SdcardUtils.CROPED_IMAGE_PATH = imageFile;
                     Logger.i(readableFileSize(SdcardUtils.CROPED_IMAGE_PATH.length()));
-                    // ==============================================================
-                    // Image Thumb
-                    // ==============================================================
-                    Bitmap bmThumbnail;
-                    /*if(croppedImage.getWidth() >  croppedImage.getHeight())
-                    {
-						int new_width = (croppedImage.getWidth()*150)/croppedImage.getHeight();
-						bmThumbnail = ThumbnailUtils.extractThumbnail(croppedImage, 270,270);
-					}
-					else
-					{
-						int new_height = (croppedImage.getHeight()*150)/croppedImage.getWidth();
 
-					} */
+                    Bitmap bmThumbnail;
+
 
                     bmThumbnail = ThumbnailUtils.extractThumbnail(croppedImage, 270, 270);
                     croppedImage.recycle();
@@ -345,10 +323,7 @@ public class ImageCropActivity extends Activity implements OnClickListener {
                     }
 
 
-					/*SdcardUtils.ORIGINAL_IMAGE_PATH = "";
-                    SdcardUtils.MEDIA_FILE_ORIGINAL=null;
-					SdcardUtils.isImageUploading=true;
-					ImageCropActivity.this.finish();*/
+
 
                     cropped = true;
                     btn_crop.setText(getResources().getString(R.string.done));
@@ -378,19 +353,12 @@ public class ImageCropActivity extends Activity implements OnClickListener {
                     ImageCropActivity.this.finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 }
-//			ImageCropActivity.this.finish();
-//			overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+
                 break;
         }
     }
 
-    /**
-     * rotate a bitmap
-     *
-     * @param bitmap bitmap to be rotated
-     * @param degree degree of rotation
-     * @return rotated bitmap
-     */
+
     public static Bitmap rotate(Bitmap bitmap, int degree) {
         int w = bitmap.getWidth();
         int h = bitmap.getHeight();

@@ -9,6 +9,8 @@ import android.view.View;
 
 import com.studentguide.R;
 import com.studentguide.databinding.ActivityCongoBinding;
+import com.studentguide.utils.Logger;
+import com.studentguide.utils.MyPref;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,7 +25,9 @@ public class CongoActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_congo);
         ButterKnife.bind(this);
 
+
         Integer score = getIntent().getIntExtra("score",0);
+
         String scoreText = score.toString()+"/5";
         binding.congoScore.setText(scoreText);
 
@@ -32,7 +36,7 @@ public class CongoActivity extends AppCompatActivity {
 
     @OnClick(R.id.tvNext)
     public void goToHome(){
-        startActivity(new Intent(this,HomeActivity.class));
+        startActivity(new Intent(this,NearByPlaceActivity.class));
         finish();
     }
 }

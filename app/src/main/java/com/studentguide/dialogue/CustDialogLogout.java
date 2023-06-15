@@ -1,4 +1,4 @@
-package com.studentguide.dilog;
+package com.studentguide.dialogue;
 
 import android.content.Context;
 import android.graphics.Color;

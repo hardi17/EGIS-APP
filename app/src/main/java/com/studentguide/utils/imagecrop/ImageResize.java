@@ -37,9 +37,6 @@ public class ImageResize {
     }
 
 
-    /**
-     * @return resized image
-     */
     public Bitmap getResizeImage() {
         //ContentResolver resolver = mContext.getContentResolver();
         mBitMapOptions = new BitmapFactory.Options();
@@ -93,9 +90,7 @@ public class ImageResize {
         return null;
     }
 
-    /**
-     * @return resized bitmap
-     */
+
     public Bitmap getResizeBitmap() {
         //ContentResolver resolver = mContext.getContentResolver();
         mBitMapOptions = new BitmapFactory.Options();
@@ -124,7 +119,7 @@ public class ImageResize {
 
                 if (mBitMap != null) {
                     if (mBitMapOptions.outWidth != mWidth || mBitMapOptions.outHeight != mHeight) {
-                        //??????? :  ???? ????????  =  (???? ???????? * ?????????) / ?????????
+
                         tempBitMap = Bitmap.createScaledBitmap(mBitMap, mWidth, mHeight, true);
                         mBitMap.recycle();
                         mBitMap = tempBitMap;

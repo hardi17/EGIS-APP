@@ -12,7 +12,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/toolbar"
             android:layout_above="@+id/tv_checkKnowledge"
-            android:padding="@dimen/dp12">
+            android:padding="@dimen/dp8">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_coins"
@@ -22,22 +22,12 @@
 
         </FrameLayout>
 
-        <TextView
-            android:id="@+id/tv_checkKnowledge"
-            android:layout_width="match_parent"
+        <ProgressBar
+            android:id="@+id/pgb"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-           android:layout_marginLeft="@dimen/sp15"
-            android:layout_marginRight="@dimen/sp15"
-            android:layout_marginTop="@dimen/dp8"
-            android:background="@drawable/blue_bg_layout"
-            android:fontFamily="@font/segoeuib"
-            android:gravity="center"
-            android:padding="@dimen/sp15"
-            android:text="@string/_doYouWantToTest"
-            android:textColor="@color/white_color"
-            android:textSize="@dimen/sp18" />
+            android:layout_centerInParent="true" />
+
 
     </RelativeLayout>
 </layout>

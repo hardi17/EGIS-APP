@@ -17,10 +17,7 @@ public class NetworkConnectivity {
         this.context = context;
     }
 
-    /**
-     * Check whether the device is connected, and if so, whether the connection
-     * is wifi or mobile (it could be something else).
-     */
+
     public boolean isNetworkAvailable() {
         boolean isConnected = false;
         ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -2,7 +2,6 @@ package com.studentguide.home;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentActivity;
@@ -17,7 +16,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
@@ -35,7 +33,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Filter;
 import android.widget.TextView;
 
@@ -49,9 +46,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.libraries.places.api.Places;
@@ -62,7 +57,6 @@ import com.google.android.libraries.places.api.model.RectangularBounds;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.FetchPlaceResponse;
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
-import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.studentguide.ParentObj;
 import com.studentguide.R;
@@ -96,10 +90,10 @@ public class MapActivity extends FragmentActivity implements
 
     private double lattitude = 0.0,
             longitude = 0.0,
-            starLat = 0.0,
-            startLongitude = 0.0,
+            startLat = 0.0,
+            startLng = 0.0,
             endLat = 0.0,
-            endLongitude = 0.0;
+            endLng = 0.0;
 
     private GetAddressAsync getAddressAsync;
     private PlacesClient placesClient;
@@ -123,7 +117,14 @@ public class MapActivity extends FragmentActivity implements
             address = "",
             city = "",
             knownName = "",
-            country = "";
+            country = "",
+            fromPlaceId = "",
+            toPlaceId = "",
+            mode = "",
+            duration = "",
+            distance = "",
+            placeId = "",
+            startToAnd = "";
 
     //Location
     private final int PERMISSION_RESULT_CODE = 3;
@@ -132,6 +133,7 @@ public class MapActivity extends FragmentActivity implements
             Manifest.permission.ACCESS_COARSE_LOCATION};
 
     private FragmentManager fragmentManager;
+
     // private SupportMapFragment mapFragment;
     private SupportMapFragment mapFragment;
     private boolean isMoveMap = false;
@@ -152,13 +154,18 @@ public class MapActivity extends FragmentActivity implements
 
     private void getIntentData() {
         isFrom = getIntent().getBooleanExtra("isFrom", false);
+        isTo = getIntent().getBooleanExtra("isTo", false);
         isPath = getIntent().getBooleanExtra("isPath", false);
         lattitude = getIntent().getDoubleExtra("lattitude", 0.0);
         longitude = getIntent().getDoubleExtra("longitude", 0.0);
-        starLat = 51.41259;
-        startLongitude = -0.2974;
-        endLat = 51.555973;
-        endLongitude = -0.279672;
+        startLat = getIntent().getDoubleExtra("startLat", startLat);
+        startLng = getIntent().getDoubleExtra("startLng", startLng);
+        endLat = getIntent().getDoubleExtra("endLat", endLat);
+        endLng = getIntent().getDoubleExtra("endLng", endLng);
+        mode = getIntent().getStringExtra("mode");
+        duration = getIntent().getStringExtra("duration");
+        distance = getIntent().getStringExtra("distance");
+        startToAnd = getIntent().getStringExtra("startToAnd");
     }
 
     private void initView() {
@@ -169,6 +176,10 @@ public class MapActivity extends FragmentActivity implements
             binding.imgGoogleMapActivityMarker.setVisibility(View.GONE);
             binding.toolbar.txtDone.setVisibility(View.GONE);
             binding.rlDetailPath.setVisibility(View.VISIBLE);
+            binding.tvLocationName.setText(startToAnd);
+            binding.tvDistnaceValue.setText(distance);
+            binding.tvTimeValue.setText(duration);
+            binding.tvByValue.setText(mode);
         } else {
             binding.imgGoogleMapActivityMarker.setVisibility(View.VISIBLE);
             binding.toolbar.txtDone.setVisibility(View.VISIBLE);
@@ -214,10 +225,10 @@ public class MapActivity extends FragmentActivity implements
 
     @OnClick(R.id.rl_navigate_map)
     public void goToMap() {
-        if (starLat != 0.0 && startLongitude != 0.0
-                && endLat != 0.0 && endLongitude != 0.0) {
+        if (startLat != 0.0 && startLng != 0.0
+                && endLat != 0.0 && endLng != 0.0) {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                    Uri.parse("http://maps.google.com/maps?saddr="+"starLat"+",startLongitude"+"&daddr="+"endLat"+",endLongitude"));
+                    Uri.parse("http://maps.google.com/maps?saddr=" + startLat + "," + startLng + "&daddr=" + endLat + "," + endLng));
             startActivity(intent);
         }
     }
@@ -249,19 +260,6 @@ public class MapActivity extends FragmentActivity implements
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-//                    if (StringUtils.isNotEmpty(selectedAddress)
-//                            && StringUtils.isNotEmpty(lattitude)
-//                            && StringUtils.isNotEmpty(longitude)) {
-//                        Intent intent = new Intent();
-//                        intent.putExtra("latitude", lattitude);
-//                        intent.putExtra("longitude", longitude);
-//                        intent.putExtra("address", selectedAddress);
-//
-//                        GlobalVariable.str_lat = lattitude;
-//                        GlobalVariable.str_long = longitude;
-//                        setResult(RESULT_OK, intent);
-//                        finish();
-//                    }
                     return true;
                 }
 
@@ -299,18 +297,16 @@ public class MapActivity extends FragmentActivity implements
         Places.initialize(getApplicationContext(), getString(R.string.google_maps_key));
         placesClient = Places.createClient(MapActivity.this);
 
+
         binding.actvGoogleMapActivitySearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
                 AutoCompletePlace place = (AutoCompletePlace) adapterView.getItemAtPosition(i);
                 binding.actvGoogleMapActivitySearch.setText(place.getDescription());
                 placeDescription = place.getDescription();
                 binding.actvGoogleMapActivitySearch.setSelection(binding.actvGoogleMapActivitySearch.getText().toString().length());
                 binding.actvGoogleMapActivitySearch.dismissDropDown();
 
-                // Define a Place ID.
                 String placeId = place.getId();
 
                 // Specify the fields to return.
@@ -345,15 +341,20 @@ public class MapActivity extends FragmentActivity implements
                                 google_Map.moveCamera(CameraUpdateFactory
                                         .newCameraPosition(cameraPosition));
 
-                                /*google_Map.animateCamera(CameraUpdateFactory.newLatLngZoom
-                                        (placeLatLng, google_Map.getCameraPosition().zoom));*/
+                                google_Map.addMarker(new MarkerOptions().position(new LatLng(lattitude, longitude)))
+                                        .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+
+                                //  placeId = place1.getId();
+                        /*google_Map.animateCamera(CameraUpdateFactory.newLatLngZoom
+                                (placeLatLng, google_Map.getCameraPosition().zoom));*/
                             }
                             adapter.clear();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@androidx.annotation.NonNull Exception exception) {
+                    public void onFailure(@NonNull Exception exception) {
                         if (exception instanceof ApiException) {
                             ApiException apiException = (ApiException) exception;
                             int statusCode = apiException.getStatusCode();
@@ -362,11 +363,9 @@ public class MapActivity extends FragmentActivity implements
                         }
                     }
                 });
-
-                KeyBoardUtils.closeSoftKeyboard(MapActivity.this);
-
             }
         });
+
 
     }
 
@@ -419,12 +418,14 @@ public class MapActivity extends FragmentActivity implements
                                              final double dLat,
                                              final double dLong,
                                              int colorName,
-                                             final boolean isMapClear) {
+                                             final boolean isMapClear,
+                                             String mode) {
         new MapDirections(
                 new LatLng(sLat, sLong),
                 new LatLng(dLat, dLong),
                 MapActivity.this,
                 colorName,
+                mode,
                 polylineOptions -> {
                     if (polylineOptions != null) {
                         if (isMapClear) {
@@ -466,12 +467,12 @@ public class MapActivity extends FragmentActivity implements
             markerOptions.position(new LatLng(sLat, sLong))
                     .title(sAdd)
                     .snippet(StaticData.duration)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.backward_arrow));
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
             googleMap.addMarker(markerOptions);
         } else {
             markerOptions.position(new LatLng(sLat, sLong))
                     .title(sAdd)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.backward_arrow));
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
             googleMap.addMarker(markerOptions);
         }
     }
@@ -567,64 +568,77 @@ public class MapActivity extends FragmentActivity implements
                 // Enable / Disable Rotate gesture
                 googleMap.getUiSettings().setRotateGesturesEnabled(true);
 
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(new LatLng(map_lat, map_lng))
-                        .zoom(15)
-                        .build();
-
-                googleMap.moveCamera(CameraUpdateFactory
-                        .newCameraPosition(cameraPosition));
-
 
                 // Enable / Disable zooming functionality
                 googleMap.getUiSettings().setZoomGesturesEnabled(true);
 
                 if (isPath) {
-                    /*googleMap.addMarker(new MarkerOptions().position(new LatLng(map_lat, map_lng)))
-                            .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_arrow));*/
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(new LatLng(startLat, startLng))
+                            .zoom(15)
+                            .build();
 
-                    if (starLat != 0.0 && startLongitude != 0.0
-                            && endLat != 0.0 && endLongitude != 0.0) {
-                        getMapDirectionFromPolyLine(googleMap, map_lat, map_lng, starLat, startLongitude, R.color.color_012169, false);
-                        getMapDirectionFromPolyLine(googleMap, starLat, startLongitude, endLat, endLat, R.color.color_012169, false);
+                    googleMap.moveCamera(CameraUpdateFactory
+                            .newCameraPosition(cameraPosition));
+
+                    if (startLat != 0.0 && startLng != 0.0
+                            && endLat != 0.0 && endLng != 0.0) {
+                        getMapDirectionFromPolyLine(googleMap, map_lat, map_lng, startLat, startLng, R.color.color_C8102E, true, mode);
+                        Logger.d(map_lat + " " + map_lng);
+                        Logger.d(startLat + " " + startLng);
+                        Logger.d(endLat + " " + endLng);
+                        getMapDirectionFromPolyLine(googleMap, startLat, startLng, endLat, endLng, R.color.color_C8102E, true, mode);
+                        Logger.d(map_lat + " " + map_lng);
+                        Logger.d(startLat + " " + startLng);
+                        Logger.d(endLat + " " + endLng);
                     }
                 } else {
+
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(new LatLng(map_lat, map_lng))
+                            .zoom(15)
+                            .build();
+
+                    googleMap.moveCamera(CameraUpdateFactory
+                            .newCameraPosition(cameraPosition));
+
+                    googleMap.addMarker(new MarkerOptions().position(new LatLng(map_lat, map_lng)))
+                            .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+
                     new LocationAddressAsyncUtils(MapActivity.this, map_lat, map_lng,
                             (shortAddress, longAddress, city, countryName, countryCode) -> currCountryCode = countryCode).execute();
 
-                    googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
-                        @Override
-                        public void onCameraChange(CameraPosition cameraPosition) {
-                            binding.actvGoogleMapActivitySearch.dismissDropDown();
-                            latLng = cameraPosition.target;
+                    googleMap.setOnCameraChangeListener(cameraPosition1 -> {
+                        binding.actvGoogleMapActivitySearch.dismissDropDown();
+                        latLng = cameraPosition1.target;
 
-                            lattitude = latLng.latitude;
-                            longitude = latLng.longitude;
+                        lattitude = latLng.latitude;
+                        longitude = latLng.longitude;
 
-                            try {
-                                new LocationAddressAsyncUtils(MapActivity.this, map_lat, map_lng,
-                                        (shortAddress, longAddress, city, countryName, countryCode) -> currCountryCode = countryCode).execute();
+                        try {
+                            new LocationAddressAsyncUtils(MapActivity.this, map_lat, map_lng,
+                                    (shortAddress, longAddress, city, countryName, countryCode) -> currCountryCode = countryCode).execute();
 
 
-                                //For static search address in auto complete
-                                if (!isMoveMap) {
-                                    isMoveMap = true;
-                                } else {
-                                    selectedAddress = "";
-                                    isMoveMap = false;
-                                }
-
-                                if (getAddressAsync != null) {
-                                    if (getAddressAsync.getStatus() != AsyncTask.Status.FINISHED) {
-                                        getAddressAsync.cancel(true);
-                                    }
-                                }
-                                getAddressAsync = new GetAddressAsync();
-                                getAddressAsync.execute();
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                            //For static search address in auto complete
+                            if (!isMoveMap) {
+                                isMoveMap = true;
+                            } else {
+                                selectedAddress = "";
+                                isMoveMap = false;
                             }
+
+                            if (getAddressAsync != null) {
+                                if (getAddressAsync.getStatus() != AsyncTask.Status.FINISHED) {
+                                    getAddressAsync.cancel(true);
+                                }
+                            }
+                            getAddressAsync = new GetAddressAsync();
+                            getAddressAsync.execute();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     });
 
@@ -810,11 +824,7 @@ public class MapActivity extends FragmentActivity implements
                     new LatLng(lattitude, longitude));
 
             FindAutocompletePredictionsRequest request1 = FindAutocompletePredictionsRequest.builder()
-                    // Call either setLocationBias() OR setLocationRestriction().
-                    // .setLocationBias(bounds)
-                    //.setLocationRestriction(bounds)
-                    // .setCountry(currCountryCode)
-                    //.setTypeFilter(TypeFilter.ESTABLISHMENT)
+
                     .setSessionToken(token)
                     .setQuery(query)
                     .build();
@@ -823,9 +833,7 @@ public class MapActivity extends FragmentActivity implements
             placesClient.findAutocompletePredictions(request1).addOnSuccessListener(findAutocompletePredictionsResponse -> {
                 clear();
                 for (AutocompletePrediction prediction : findAutocompletePredictionsResponse.getAutocompletePredictions()) {
-                    /*Logger.d("1==" + prediction.getPrimaryText(null).toString());
-                    Logger.d("2==" + prediction.getFullText(null).toString());
-                    Logger.d("3==" + prediction.getSecondaryText(null).toString());*/
+
 
                     add(new AutoCompletePlace(prediction.getPlaceId(),
                             prediction.getFullText(null).toString()));

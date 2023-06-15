@@ -12,8 +12,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dp25"
-            android:theme="@style/AppTheme"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:theme="@style/AppTheme">
 
             <ImageView
                 android:id="@+id/iv_close"
@@ -56,15 +56,16 @@
                             app:civ_border_width="5dp"
                             app:civ_fill_color="@color/color_000000" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:src="@drawable/ic_profile_add_button" />
+                        <!--   <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_alignParentRight="true"
+                               android:layout_alignParentBottom="true"
+                               android:src="@drawable/ic_profile_add_button" />-->
                     </RelativeLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_detail_user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp5"
@@ -107,12 +108,11 @@
                     android:id="@+id/tv_menu_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_home"
                     android:drawableLeft="@drawable/ic_home"
                     android:drawablePadding="@dimen/dp10"
                     android:fontFamily="@font/segoeuib"
                     android:padding="@dimen/sp15"
-                    android:text="@string/_home"
+                    android:text="@string/_nearbyPlaces"
                     android:textColor="@color/color_012169"
                     android:textSize="@dimen/sp18" />
 
@@ -125,7 +125,6 @@
                     android:id="@+id/tv_menu_travel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_travel"
                     android:drawableLeft="@drawable/ic_travel"
                     android:drawablePadding="@dimen/dp10"
                     android:fontFamily="@font/segoeuib"
@@ -195,10 +194,10 @@
                         android:background="@color/color_7d012169" />
         -->
                 <TextView
-                    android:id="@+id/tv_menu_groceryShops"
+                    android:id="@+id/tv_menu_nhsNearby"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_grocery"
+                    android:drawableLeft="@drawable/nhs"
                     android:drawablePadding="@dimen/dp10"
                     android:fontFamily="@font/segoeuib"
                     android:padding="@dimen/sp15"
@@ -206,28 +205,6 @@
                     android:textColor="@color/color_012169"
                     android:textSize="@dimen/sp18" />
 
-                <!--<View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/color_7d012169" />
-    -->
-                <TextView
-                    android:id="@+id/tv_menu_help"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_accomodation"
-                    android:drawablePadding="@dimen/dp10"
-                    android:fontFamily="@font/segoeuib"
-                    android:padding="@dimen/sp15"
-                    android:text="@string/_help"
-                    android:textColor="@color/color_012169"
-                    android:textSize="@dimen/sp18" />
-
-                <!-- <View
-                     android:layout_width="match_parent"
-                     android:layout_height="0.5dp"
-                     android:background="@color/color_7d012169" />
-     -->
                 <TextView
                     android:id="@+id/tv_menu_logout"
                     android:layout_width="match_parent"

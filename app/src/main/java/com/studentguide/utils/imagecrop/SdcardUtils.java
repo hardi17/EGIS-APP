@@ -30,13 +30,7 @@ public class SdcardUtils {
     public static String TRICE_VIDEO = ".GuideImage/Video";
 
 
-    /**
-     * if folder doesn't exists it creates a folder
-     * or if it exists it return its path
-     *
-     * @param folderPath folder name
-     * @return full folder path
-     */
+
     public static String createFolder(String folderPath) {
         String folderName = "";
 
@@ -49,9 +43,7 @@ public class SdcardUtils {
         return folderName;
     }
 
-    /**
-     * @return image file name with .jpeg
-     */
+
     public static File returnImageFileName() {
         File imageFileName;
         String ImageName = "Image_" + Calendar.getInstance().getTimeInMillis() + ".jpeg";
@@ -64,9 +56,7 @@ public class SdcardUtils {
         return imageFileName;
     }
 
-    /**
-     * @return video file name with .mp4
-     */
+
     public static File returnVideoFileName() {
         File imageFileName;
         String ImageName = "Video_" + Calendar.getInstance().getTimeInMillis() + ".mp4";
@@ -80,9 +70,7 @@ public class SdcardUtils {
     }
 
 
-    /**
-     * @return image thumb file name with .jpeg
-     */
+
     public static File returnThumbImageFileName() {
         File thumbfilename;
         String ImagethumbName = "Image_thumb_" + Calendar.getInstance().getTimeInMillis() + ".jpeg";

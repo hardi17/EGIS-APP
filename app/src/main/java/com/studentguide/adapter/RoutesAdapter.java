@@ -36,9 +36,7 @@ public class RoutesAdapter extends RecyclerView.Adapter<RoutesAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-       /* if(travelOption.equals("Walking")){
-            holder.binding.tvRouteName.setText(travelOption);
-        }*/
+
 
         holder.binding.tvRouteName.setText(travelOption);
         holder.binding.llRouteDetail.setOnClickListener(new View.OnClickListener() {

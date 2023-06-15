@@ -13,9 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by WINDOWS-D20 on 17-7-2017.
- */
+
 public class LocationAddressAsyncUtils extends AsyncTask<Object, Object, ArrayList<String>> {
     private Context context;
     private double
@@ -25,15 +23,7 @@ public class LocationAddressAsyncUtils extends AsyncTask<Object, Object, ArrayLi
 
     public LocationAddressAsyncUtils(Context context, double latitude, double longitude, ServiceDoneListener listener) {
 
-        /**
-         * How to cancel this async task?
-         *
-         * if (getAddressAsync != null) {
-         *   if (getAddressAsync.getStatus() != AsyncTask.Status.FINISHED) {
-         *       getAddressAsync.cancel(true);
-         *   }
-         * }
-         */
+
 
         this.context = context;
         this.latitude = latitude;
@@ -60,7 +50,6 @@ public class LocationAddressAsyncUtils extends AsyncTask<Object, Object, ArrayLi
                         countryCode = address.getCountryCode(); // IN, US etc
 
 
-                // E.g. Gandhinagar, Gujarat, India
                 shortAddress = (StringUtils.isNotEmpty(address.getLocality()) ? address.getLocality() + ", " : "") +
                         (StringUtils.isNotEmpty(address.getAdminArea()) ? address.getAdminArea() + ", " : "") +
                         (StringUtils.isNotEmpty(address.getCountryName()) ? address.getCountryName() : "");
@@ -96,22 +85,22 @@ public class LocationAddressAsyncUtils extends AsyncTask<Object, Object, ArrayLi
 
         if (!dataList.isEmpty()) {
             listener.onDone(
-                    dataList.get(0),  // shortAddress // Gandhinagar, Gujarat, India
-                    dataList.get(1),  // longAddress  // Detailed Address Lines
-                    dataList.get(2),  // city         // Gandhinagar
-                    dataList.get(3),  // countryName  // India
-                    dataList.get(4)   // countryCode  // IN, US etc
+                    dataList.get(0),
+                    dataList.get(1),
+                    dataList.get(2),
+                    dataList.get(3),
+                    dataList.get(4)
             );
         }
     }
 
     public interface ServiceDoneListener {
         void onDone(
-                String shortAddress,// Gandhinagar, Gujarat, India
-                String longAddress, // Detailed Address Lines
-                String city,        // Gandhinagar
-                String countryName, // India
-                String countryCode  // IN, US etc
+                String shortAddress,
+                String longAddress,
+                String city,
+                String countryName,
+                String countryCode
         );
     }
 }

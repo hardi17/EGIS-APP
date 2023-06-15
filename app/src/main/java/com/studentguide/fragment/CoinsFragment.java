@@ -1,6 +1,7 @@
 package com.studentguide.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import com.studentguide.R;
 import com.studentguide.adapter.TravelSignalWasteGuideAdapter;
 import com.studentguide.databinding.FragmentCoinsBinding;
 import com.studentguide.home.CurrencyActivity;
+import com.studentguide.home.QuestionAnsActivity;
 import com.studentguide.models.CoinsNotesModel;
 
 import java.util.ArrayList;
@@ -30,9 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class CoinsFragment extends Fragment {
 
     private CurrencyActivity activity;
@@ -75,6 +75,7 @@ public class CoinsFragment extends Fragment {
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                binding.pgb.setVisibility(View.GONE);
                 coinsNotesModelList.clear();
                 for(DataSnapshot coinSnapshot: snapshot.getChildren()){
                     CoinsNotesModel model = coinSnapshot.getValue(CoinsNotesModel.class);
@@ -87,7 +88,7 @@ public class CoinsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                binding.pgb.setVisibility(View.GONE);
             }
         });
 
@@ -98,4 +99,6 @@ public class CoinsFragment extends Fragment {
         super.onDestroy();
         unbinder.unbind();
     }
+
+
 }

@@ -29,8 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_mic" />
+                android:contentDescription="@string/app_name" />
 
             <RelativeLayout
                 android:id="@+id/rl_MapActivity_SearchView"
@@ -138,7 +137,7 @@
                             android:fontFamily="@font/segoeuib"
                             android:text="Kingston Upon Thames,UK "
                             android:textColor="@color/color_000000"
-                            android:textSize="20dp" />
+                            android:textSize="@dimen/dp15" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -177,7 +176,7 @@
                                         android:fontFamily="@font/seguisb"
                                         android:text="25 min"
                                         android:textColor="@color/color_012169"
-                                        android:textSize="18dp" />
+                                        android:textSize="15dp" />
 
                                 </LinearLayout>
 
@@ -212,7 +211,7 @@
                                         android:fontFamily="@font/seguisb"
                                         android:text="9.4 km"
                                         android:textColor="@color/color_012169"
-                                        android:textSize="18dp" />
+                                        android:textSize="15dp" />
 
                                 </LinearLayout>
 
@@ -247,7 +246,7 @@
                                         android:fontFamily="@font/seguisb"
                                         android:text="Car"
                                         android:textColor="@color/color_012169"
-                                        android:textSize="18dp" />
+                                        android:textSize="15dp" />
 
                                 </LinearLayout>
 

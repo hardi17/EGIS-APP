@@ -28,9 +28,6 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.studentguide.utils.Logger;
 
 
-/**
- * Created by prismetric on 3/17/2016.
- */
 public class LocationGPS implements  GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener
 {
     Context ctx;
@@ -45,10 +42,7 @@ public class LocationGPS implements  GoogleApiClient.ConnectionCallbacks, Google
     LocationListener locListener;
     FusedLocationProviderApi fusedLocationProviderApi;
     LocationSettingsRequest.Builder builder;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
     private GoogleApiClient client;
     Activity activity;
     PendingResult<LocationSettingsResult> result;

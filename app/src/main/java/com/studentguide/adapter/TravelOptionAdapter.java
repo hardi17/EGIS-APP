@@ -15,23 +15,31 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.studentguide.ParentObj;
 import com.studentguide.R;
 import com.studentguide.databinding.RawTravelLayoutBinding;
+import com.studentguide.home.TravelActivity;
 import com.studentguide.listener.OnRefreshTravelOptionListener;
 
 import java.util.ArrayList;
+
+import static com.studentguide.home.TravelActivity.fromPlaceId;
+
+import static com.studentguide.home.TravelActivity.toPlaceId;
 
 public class TravelOptionAdapter extends RecyclerView.Adapter<TravelOptionAdapter.ViewHolder> {
 
     private Activity activity;
     private ArrayList<String> lsOption = new ArrayList<String>();
+    private ArrayList<String> lsIdOption = new ArrayList<String>();
     private int selected_position = -1;
     OnRefreshTravelOptionListener listener;
 
 
-    public TravelOptionAdapter(Activity activity, ArrayList<String> lsOption, OnRefreshTravelOptionListener listener) {
+    public TravelOptionAdapter(Activity activity, ArrayList<String> lsOption, ArrayList<String> lsIdOption, OnRefreshTravelOptionListener listener) {
         this.activity = activity;
         this.lsOption = lsOption;
+        this.lsIdOption = lsIdOption;
         this.listener = listener;
     }
 
@@ -47,27 +55,28 @@ public class TravelOptionAdapter extends RecyclerView.Adapter<TravelOptionAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.binding.tvTitle.setText(lsOption.get(position));
-        holder.binding.tvTitle.setTextColor(R.color.color_012169);
 
         if (selected_position == position) {
             holder.binding.rlBg.setBackgroundResource(R.drawable.blue_bg_layout);
-            holder.binding.tvTitle.setTextColor(R.color.white_color);
-            holder.binding.ivImage.setImageTintList(ColorStateList.valueOf(R.color.white_color));
+            holder.binding.tvTitle.setTextColor(activity.getResources().getColorStateList(R.color.white_color));
         } else {
             holder.binding.rlBg.setBackgroundResource(R.drawable.white_bg_layout);
-            holder.binding.tvTitle.setTextColor(R.color.color_01194F);
-            holder.binding.ivImage.setImageTintList(ColorStateList.valueOf(R.color.color_01194F));
+            holder.binding.tvTitle.setTextColor(activity.getResources().getColorStateList(R.color.color_012169));
         }
 
         holder.binding.tvTitle.setOnClickListener(v -> {
-            if(selected_position==position){
-                selected_position=-1;
+            if (fromPlaceId != "" && toPlaceId != "") {
+                if (selected_position == position) {
+                    selected_position = -1;
+                    notifyDataSetChanged();
+                    return;
+                }
+                selected_position = position;
                 notifyDataSetChanged();
-                return;
+                listener.onRefreshRoutes(lsIdOption.get(position), lsOption.get(position));
+            }else {
+                ParentObj.snackBarView.snackBarShow(activity, activity.getString(R.string._plzSelectLocation));
             }
-            selected_position = position;
-            notifyDataSetChanged();
-            listener.onRefreshRoutes(lsOption.get(position));
         });
     }
 

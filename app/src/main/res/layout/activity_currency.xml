@@ -78,11 +78,32 @@
 
         </LinearLayout>
 
-
-        <com.studentguide.utils.CustomViewPager
-            android:id="@+id/customVP"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+
+            <com.studentguide.utils.CustomViewPager
+                android:id="@+id/customVP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/tv_checkKnowledgeCoinNote" />
+
+            <TextView
+                android:id="@+id/tv_checkKnowledgeCoinNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/dp12"
+                android:background="@drawable/blue_bg_layout"
+                android:fontFamily="@font/segoeuib"
+                android:gravity="center"
+                android:padding="@dimen/sp15"
+                android:text="@string/_doYouWantToTest"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/sp18" />
+        </RelativeLayout>
 
     </LinearLayout>
 </layout>

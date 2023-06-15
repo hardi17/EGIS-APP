@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.studentguide.ParentObj;
 import com.studentguide.R;
 import com.studentguide.databinding.ActivityLoginBinding;
-import com.studentguide.home.HomeActivity;
+import com.studentguide.home.NearByPlaceActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class)
+            startActivity(new Intent(LoginActivity.this, NearByPlaceActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
                             | Intent.FLAG_ACTIVITY_CLEAR_TOP
                             | Intent.FLAG_ACTIVITY_NEW_TASK));
@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     ParentObj.snackBarView.snackBarShowGreen(LoginActivity.this,"Login Successful!");
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class)
+                    startActivity(new Intent(LoginActivity.this, NearByPlaceActivity.class)
                             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
                                     | Intent.FLAG_ACTIVITY_CLEAR_TOP
                                     | Intent.FLAG_ACTIVITY_NEW_TASK));

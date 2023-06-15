@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,46 +67,27 @@
                                 android:textSize="@dimen/sp16" />
 
                             <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/dp50"
+                                android:id="@+id/ll_imageView"
+                                android:layout_width="@dimen/dp100"
+                                android:layout_height="@dimen/dp100"
                                 android:layout_below="@+id/tv_question"
+                                android:layout_centerInParent="true"
                                 android:layout_margin="@dimen/dp10"
                                 android:gravity="center"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:visibility="gone">
 
                                 <ImageView
                                     android:id="@+id/tv_one_img"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="fill_parent"
+                                    android:layout_height="match_parent"
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="@dimen/dp10"
                                     android:layout_marginRight="@dimen/dp10"
                                     android:layout_weight="1"
-                                    android:background="@color/color_012169" />
+                                    android:scaleType="fitCenter"
+                                    android:src="@mipmap/app_icon" />
 
-                                <ImageView
-                                    android:id="@+id/tv_two_img"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="fill_parent"
-                                    android:layout_marginRight="@dimen/dp10"
-                                    android:layout_weight="1"
-                                    android:background="@color/color_012169" />
-
-                                <ImageView
-                                    android:id="@+id/tv_three_img"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="fill_parent"
-                                    android:layout_marginRight="@dimen/dp10"
-                                    android:layout_weight="1"
-                                    android:background="@color/color_012169" />
-
-                                <ImageView
-                                    android:id="@+id/tv_four_img"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="fill_parent"
-                                    android:layout_marginRight="@dimen/dp10"
-                                    android:layout_weight="1"
-                                    android:background="@color/color_012169" />
                             </LinearLayout>
 
                         </RelativeLayout>
@@ -116,8 +97,8 @@
                             android:id="@+id/tv_questionNo"
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp8"
-                            android:background="@drawable/white_bg"
+                            android:layout_marginLeft="@dimen/sp12"
+                            android:background="@drawable/white_bg_layout"
                             android:gravity="center"
                             android:padding="@dimen/dp12"
                             android:text="Q. 1"
@@ -161,7 +142,8 @@
                 android:padding="@dimen/dp10"
                 android:text="@string/_previous"
                 android:textColor="@color/color_012169"
-                android:textSize="@dimen/sp15" />
+                android:textSize="@dimen/sp15"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_next"
@@ -179,23 +161,6 @@
                 android:textSize="@dimen/sp15" />
 
         </LinearLayout>
-        <!--<TextView
-            android:id="@+id/tv_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="@dimen/dp25"
-            android:textColor="@color/color_000000"
-            android:textSize="@dimen/dp25" />
-
-
-        <Button
-            android:id="@+id/btNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/color_012169"
-            android:text="@string/next" />-->
 
     </RelativeLayout>
 </layout>

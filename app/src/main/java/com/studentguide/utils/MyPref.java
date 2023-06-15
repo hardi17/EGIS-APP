@@ -5,10 +5,6 @@ import android.content.SharedPreferences;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by Sachin on 26/4/19.
- * Prismetric Technology, Gandhinagar, Gujarat
- */
 public class MyPref {
 
     private SharedPreferences preferences;

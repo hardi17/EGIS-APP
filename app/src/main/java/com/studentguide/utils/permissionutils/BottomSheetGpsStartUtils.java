@@ -35,10 +35,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.studentguide.R;
 
 
-/**
- * Created by bhavesh on 28-2-2018.
- * Prismetric Technology, Gandhinagar, Gujarat
- */
 @SuppressLint("ValidFragment")
 public class BottomSheetGpsStartUtils extends BottomSheetDialogFragment {
     public final static int REQUEST_GPS_ON_SETTINGS = 101;
@@ -61,20 +57,6 @@ public class BottomSheetGpsStartUtils extends BottomSheetDialogFragment {
     private boolean checkPermissionOneTime = true;
 
 
-    /**
-     * By Bhavesh<br/>
-     * <p/>
-     * Permission List
-     * <p>
-     * Make sure you are declared permission in menifest.xml also
-     */
-
-    /**
-     * By Bhavesh<br/>
-     * <p/>
-     *
-     * @param activity Must be AppCompatActivity
-     */
     @SuppressLint("ValidFragment")
     public BottomSheetGpsStartUtils(AppCompatActivity activity, boolean isCompulsoryStartGPS, GPSAllowListener listener) {
         this.activity = activity;

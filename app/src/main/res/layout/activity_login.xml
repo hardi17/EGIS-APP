@@ -24,8 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/toolbar"
-                android:gravity="center"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
@@ -136,13 +136,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp25"
+                    android:layout_marginTop="@dimen/dp2"
                     android:layout_marginRight="@dimen/dp25"
                     android:background="@drawable/blue_bg_layout"
                     android:fontFamily="@font/segoeuib"
                     android:gravity="center"
                     android:padding="@dimen/sp11"
                     android:text="@string/_login"
-                    android:layout_marginTop="@dimen/dp2"
                     android:textAllCaps="true"
                     android:textColor="@color/white_color"
                     android:textSize="@dimen/sp15" />

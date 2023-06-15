@@ -15,12 +15,14 @@
             app:cardElevation="2dp">
 
             <LinearLayout
+                android:id="@+id/ll_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_bg"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tv_optionID"
                     android:layout_width="@dimen/dp50"
                     android:layout_height="@dimen/dp50"
                     android:background="@drawable/blue_bg_layout"

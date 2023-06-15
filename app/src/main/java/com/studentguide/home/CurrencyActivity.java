@@ -14,6 +14,7 @@ import com.studentguide.R;
 import com.studentguide.databinding.ActivityCurrencyBinding;
 import com.studentguide.fragment.CoinsFragment;
 import com.studentguide.fragment.NotesFragment;
+import com.studentguide.utils.MyPref;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class CurrencyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_currency);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_currency);
         ButterKnife.bind(this);
 
         initView();
@@ -75,6 +76,13 @@ public class CurrencyActivity extends AppCompatActivity {
         binding.customVP.setCurrentItem(1);
     }
 
+    @OnClick(R.id.tv_checkKnowledgeCoinNote)
+    public void checkYourKnowledge() {
+        new MyPref(this).setData(MyPref.Keys.Score, 0);
+        startActivity(new Intent(this, QuestionAnsActivity.class));
+
+    }
+
     //adapter for viewpager
     class MyActivityAdapter extends FragmentPagerAdapter {
 
@@ -98,7 +106,6 @@ public class CurrencyActivity extends AppCompatActivity {
             mFragmentList.add(fragment);
         }
     }
-
 
 
 }

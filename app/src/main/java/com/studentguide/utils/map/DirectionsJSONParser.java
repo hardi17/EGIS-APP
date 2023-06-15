@@ -1,9 +1,5 @@
 package com.studentguide.utils.map;
 
-/**
- * Created by Androiddev on 11/21/2017.
- */
-
 import com.google.android.gms.maps.model.LatLng;
 import com.studentguide.utils.Logger;
 
@@ -83,10 +79,7 @@ public class DirectionsJSONParser {
     }
 
 
-    /**
-     * Method to decode polyline points
-     * Courtesy : jeffreysambells.com/2010/05/27/decoding-polylines-from-google-maps-direction-api-with-java
-     */
+
     private List<LatLng> decodePoly(String encoded) {
 
         List<LatLng> poly = new ArrayList<LatLng>();

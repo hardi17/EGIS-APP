@@ -1,5 +1,6 @@
 package com.studentguide.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,17 +21,17 @@ import com.studentguide.R;
 import com.studentguide.adapter.TravelSignalWasteGuideAdapter;
 import com.studentguide.databinding.FragmentNotesBinding;
 import com.studentguide.home.CurrencyActivity;
+import com.studentguide.home.QuestionAnsActivity;
 import com.studentguide.models.CoinsNotesModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class NotesFragment extends Fragment {
 
     CurrencyActivity activity;
@@ -44,14 +45,14 @@ public class NotesFragment extends Fragment {
     List<CoinsNotesModel> coinsNotesModelList;
 
     public NotesFragment() {
-        // Required empty public constructor
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         activity = (CurrencyActivity) getActivity();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notes, container, false);
         unbinder = ButterKnife.bind(activity);
@@ -68,23 +69,25 @@ public class NotesFragment extends Fragment {
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                binding.pgb.setVisibility(View.GONE);
                 coinsNotesModelList.clear();
-                for(DataSnapshot noteSnapshot: snapshot.getChildren()){
+                for (DataSnapshot noteSnapshot : snapshot.getChildren()) {
                     CoinsNotesModel model = noteSnapshot.getValue(CoinsNotesModel.class);
                     coinsNotesModelList.add(model);
                 }
                 binding.rcvNote.setLayoutManager(new LinearLayoutManager(activity));
-                adapter = new TravelSignalWasteGuideAdapter(activity, false, false, true, false,null,null,coinsNotesModelList);
+                adapter = new TravelSignalWasteGuideAdapter(activity, false, false, true, false, null, null, coinsNotesModelList);
                 binding.rcvNote.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                binding.pgb.setVisibility(View.GONE);
             }
         });
 
     }
+
 
     @Override
     public void onDestroy() {

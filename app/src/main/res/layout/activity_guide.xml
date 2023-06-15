@@ -26,17 +26,26 @@
 
         </FrameLayout>
 
+        <ProgressBar
+            android:id="@+id/pgb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
         <TextView
             android:id="@+id/tv_checkKnowledge"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_margin="@dimen/sp15"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp15"
             android:background="@drawable/blue_bg_layout"
             android:fontFamily="@font/segoeuib"
             android:gravity="center"
-            android:padding="@dimen/sp15"
+            android:padding="@dimen/sp12"
             android:text="@string/_doYouWantToTest"
             android:textColor="@color/white_color"
             android:textSize="@dimen/sp18" />

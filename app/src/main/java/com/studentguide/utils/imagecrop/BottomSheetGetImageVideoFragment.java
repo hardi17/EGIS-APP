@@ -37,19 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * use
- * <p>
- * new BottomSheetGetImageVideoFragment(activity, BottomSheetGetImageVideoFragment.GET_IMAGE, new BottomSheetGetImageVideoFragment.OnActivityResult() {
- *
- * @Override public void onSuccessResult(String resultant_file_path, final Bitmap thumbnail_bitmap) {
- * <p>
- * }
- * @Override public void onFailResult(String reason) {
- * <p>
- * }
- * }).show(getChildFragmentManager(), "");
- */
+
 @SuppressWarnings("validFragment")
 public class BottomSheetGetImageVideoFragment extends BottomSheetDialogFragment {
     public static final String GET_VIDEO = "GET_VIDEO";
@@ -435,14 +423,7 @@ public class BottomSheetGetImageVideoFragment extends BottomSheetDialogFragment 
         // Filesystem.
         final Intent galleryIntent = new Intent();
         galleryIntent.setType("video/*");
-        /*if (Build.VERSION.SDK_INT < 19) {
-            galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        }
-        else
-        {
-            galleryIntent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-            galleryIntent.addCategory(Intent.CATEGORY_OPENABLE);
-        }*/
+
 
         galleryIntent.setAction(Intent.ACTION_PICK);
         galleryIntent.setData(MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
@@ -542,8 +523,6 @@ public class BottomSheetGetImageVideoFragment extends BottomSheetDialogFragment 
 
         bitmap = BitmapFactory.decodeFile(path, opts);
 
-
-        //new added 30/11/2018 start
         Bitmap rotatedBitmap = null;
         try {
             ExifInterface ei = new ExifInterface(path);
@@ -576,7 +555,6 @@ public class BottomSheetGetImageVideoFragment extends BottomSheetDialogFragment 
         }
 
         bitmap = rotatedBitmap;
-        //new added 30/11/2018 end
 
         return bitmap;
     }

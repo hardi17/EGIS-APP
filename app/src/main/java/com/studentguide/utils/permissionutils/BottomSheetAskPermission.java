@@ -22,9 +22,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.studentguide.R;
 
 
-/**
- * Created by Bhavesh on 15-11-2017.
- */
 @SuppressLint("ValidFragment")
 public class BottomSheetAskPermission extends BottomSheetDialogFragment {
     private View rootView;
@@ -35,14 +32,6 @@ public class BottomSheetAskPermission extends BottomSheetDialogFragment {
     private PermissionResultListener listener;
 
     private final int REQUEST_PERMISSION_ALL = 10;
-
-    /**
-     * By Bhavesh<br/>
-     * <p/>
-     * Permission List
-     * <p>
-     * Make sure you are declared permission in menifest.xml also
-     */
 
     // Storage
     public static final String WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -68,15 +57,7 @@ public class BottomSheetAskPermission extends BottomSheetDialogFragment {
     // Call phone
     public static final String CALL_PHONE = Manifest.permission.CALL_PHONE;
 
-    /**
-     * By Bhavesh<br/>
-     * <p/>
-     * Give permissions Like this : BottomSheetAskPermission.ACCESS_FINE_LOCATION
-     *
-     * @param context         Must be AppCompatActivity
-     * @param listener        If any of the permission is Deny then it will call onPermissionDeny();
-     * @param permissionsList List of Permissions to ask
-     */
+
     @SuppressLint("ValidFragment")
     public BottomSheetAskPermission(AppCompatActivity context, PermissionResultListener listener, String... permissionsList) {
         this.context = context;
@@ -194,12 +175,7 @@ public class BottomSheetAskPermission extends BottomSheetDialogFragment {
         }
     }
 
-    /**
-     * Returns true if the Activity has access to all given permissions.
-     * Always returns true on platforms below M.
-     *
-     * @see Activity#checkSelfPermission(String)
-     */
+
     @TargetApi(Build.VERSION_CODES.M)
     public static boolean hasSelfPermission(Activity activity, String[] permissions) {
         // Below Android M all permissions are granted at install time and are already available.

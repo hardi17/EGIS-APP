@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +22,7 @@ import com.studentguide.databinding.ActivityGuideBinding;
 import com.studentguide.models.ModelTrafficSignal;
 import com.studentguide.models.ModelWasteManagement;
 import com.studentguide.utils.Logger;
+import com.studentguide.utils.MyPref;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,7 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
     //
     List<ModelTrafficSignal> modelTrafficSignalList;
     List<ModelWasteManagement> modelWasteManagementList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +67,7 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
 
     private void setRecyclerView() {
         binding.rcvTravelSignals.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TravelSignalWasteGuideAdapter(this, isTraffic, isWaste, false, false,modelTrafficSignalList,modelWasteManagementList,null);
+        adapter = new TravelSignalWasteGuideAdapter(this, isTraffic, isWaste, false, false, modelTrafficSignalList, modelWasteManagementList, null);
         binding.rcvTravelSignals.setAdapter(adapter);
     }
 
@@ -77,8 +80,9 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
             mReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    binding.pgb.setVisibility(View.GONE);
                     modelTrafficSignalList.clear();
-                    for(DataSnapshot trafficSignalSnapshot: snapshot.getChildren()){
+                    for (DataSnapshot trafficSignalSnapshot : snapshot.getChildren()) {
                         ModelTrafficSignal model = trafficSignalSnapshot.getValue(ModelTrafficSignal.class);
                         modelTrafficSignalList.add(model);
                     }
@@ -87,7 +91,8 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    ParentObj.snackBarView.snackBarShowRed(TrafficSignalsWasteGuideActivity.this,error.getMessage());
+                    binding.pgb.setVisibility(View.GONE);
+                    ParentObj.snackBarView.snackBarShowRed(TrafficSignalsWasteGuideActivity.this, error.getMessage());
                 }
             });
         } else {
@@ -99,8 +104,9 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
             mReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    binding.pgb.setVisibility(View.GONE);
                     modelWasteManagementList.clear();
-                    for(DataSnapshot wasteManagmentSnapshot: snapshot.getChildren()){
+                    for (DataSnapshot wasteManagmentSnapshot : snapshot.getChildren()) {
                         ModelWasteManagement model = wasteManagmentSnapshot.getValue(ModelWasteManagement.class);
                         modelWasteManagementList.add(model);
                     }
@@ -109,7 +115,8 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    ParentObj.snackBarView.snackBarShowRed(TrafficSignalsWasteGuideActivity.this,error.getMessage());
+                    binding.pgb.setVisibility(View.GONE);
+                    ParentObj.snackBarView.snackBarShowRed(TrafficSignalsWasteGuideActivity.this, error.getMessage());
                 }
             });
         }
@@ -122,7 +129,9 @@ public class TrafficSignalsWasteGuideActivity extends AppCompatActivity {
 
     @OnClick(R.id.tv_checkKnowledge)
     public void checkYourknowledge() {
-        startActivity(new Intent(this, QuestionAnsActivity.class).putExtra("isTraffic",isTraffic).putExtra("isWaste",isWaste));
+        new MyPref(this).setData(MyPref.Keys.Score, 0);
+        startActivity(new Intent(this, QuestionAnsActivity.class)
+                .putExtra("isTraffic", isTraffic).putExtra("isWaste", isWaste));
     }
 
 

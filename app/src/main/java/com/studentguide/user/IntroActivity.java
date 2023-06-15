@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.studentguide.R;
 import com.studentguide.databinding.ActivityIntroBinding;
 import com.studentguide.databinding.RowStartupViewpagerBinding;
-import com.studentguide.home.HomeActivity;
+import com.studentguide.home.NearByPlaceActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -59,8 +59,8 @@ public class IntroActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            startActivity(new Intent(IntroActivity.this, HomeActivity.class)
+        if (currentUser != null) {
+            startActivity(new Intent(IntroActivity.this, NearByPlaceActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
                             | Intent.FLAG_ACTIVITY_CLEAR_TOP
                             | Intent.FLAG_ACTIVITY_NEW_TASK));
@@ -161,11 +161,11 @@ public class IntroActivity extends AppCompatActivity {
             RowStartupViewpagerBinding rowStartupViewpagerBinding;
             rowStartupViewpagerBinding = DataBindingUtil.inflate(inflater, R.layout.row_startup_viewpager, view, false);
             if (position == 0) {
-                rowStartupViewpagerBinding.txtRowstartupViewpagerMaintext.setText("11111 Lorem Ipsum Lorem Ipsum Lorem Ipsum");
+                rowStartupViewpagerBinding.txtRowstartupViewpagerMaintext.setText("Provide essential information regarding transportation");
             } else if (position == 1) {
-                rowStartupViewpagerBinding.txtRowstartupViewpagerMaintext.setText("2222 Lorem Ipsum Lorem Ipsum Lorem Ipsum");
+                rowStartupViewpagerBinding.txtRowstartupViewpagerMaintext.setText("Imparting knowledge regarding waste management and road signs");
             } else if (position == 2) {
-                rowStartupViewpagerBinding.txtRowstartupViewpagerMaintext.setText("3333 Lorem Ipsum Lorem Ipsum Lorem Ipsum");
+                rowStartupViewpagerBinding.txtRowstartupViewpagerMaintext.setText("Functionality to check the knowledge gained by providing them small interactive quiz");
             }
             view.addView(rowStartupViewpagerBinding.getRoot());
             return rowStartupViewpagerBinding.getRoot();

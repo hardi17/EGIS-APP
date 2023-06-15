@@ -8,7 +8,7 @@
 
         <RelativeLayout
             android:id="@+id/rl_bg"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@drawable/white_bg_layout"
             android:gravity="center"
@@ -29,7 +29,7 @@
                 android:textColor="@color/color_012169"
                 android:textSize="@dimen/sp15" />
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/iv_image"
                 android:layout_width="@dimen/sp15"
                 android:layout_height="@dimen/sp18"
@@ -40,7 +40,7 @@
                 android:layout_toRightOf="@+id/tv_title"
                 android:background="@drawable/ic_walking"
                 android:backgroundTint="@color/color_012169"
-                android:backgroundTintMode="src_in" />
+                android:backgroundTintMode="src_in" />-->
         </RelativeLayout>
     </RelativeLayout>
 </layout>

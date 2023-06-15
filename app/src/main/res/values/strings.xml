@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">England Guide : International Students</string>
+    <string name="app_name">England Guide : \n International Students</string>
     <string name="app_name_short">EGIS</string>
 
     <!--Map key-->
+    <!--
     <string name="google_maps_key">AIzaSyCPR3q-cCserE9cyVUaafSCR-EFVwHFZ8E</string>
+-->
+
+    <!--International student guide : In google console-->
+    <string name="google_maps_key">AIzaSyCjdM-Xkzt4n1b-CFpVrSzRw7gf6MDf1Wg</string>
 
     <!--login-signup-->
     <string name="_welcomeToEnglandGuide">Welcome To England Guide</string>
@@ -11,9 +16,8 @@
     <string name="_signup">Sign Up</string>
     <string name="_editProfile">Edit Profile</string>
     <string name="_updateProfile">Update Profile</string>
-    <string name="_enter_email">Enter your email address</string>
+    <string name="_enter_email">Enter your Email Address</string>
     <string name="_password">Password</string>
-    <string name="gallery">Gallery</string>
     <string name="select_image_option">Select Photo Option</string>
     <string name="_confirmpassword">Confirm Password</string>
     <string name="_enter_password">Enter Password</string>
@@ -30,17 +34,15 @@
     <string name="submit">Submit</string>
     <string name="_verify">Verify</string>
     <string name="_verificationCode">Verification Code</string>
-    <string name="_dateOfBirth">Date Of Birth</string>
-    <string name="_phoneNo">Phone Number</string>
-    <string name="_enterphoneNo">Enter Your Phone Number</string>
+    <string name="_dateOfBirth">Date of Birth</string>
+
+
     <string name="_firstName">First Name</string>
     <string name="_lastName">Last Name</string>
     <string name="create_An_Account">Create an account</string>
-    <string name="whats_ur_first_name">What\'s your first name, stranger?</string>
-    <string name="whats_ur_last_name">What\'s your last name?</string>
-    <string name="whats_ur_gender">What\'s your Gender?</string>
-    <string name="when_were_birth">When were you born?</string>
-    <string name="_enterBirthDay">Enter Your Birthday</string>
+    <string name="whats_ur_first_name">Enter First Name</string>
+    <string name="whats_ur_last_name">Enter Last Name</string>
+    <string name="_enterBirthDay">Enter Your Birth Date</string>
     <string name="password_inst">Please enter your registered email address. We will send you instructions to reset your password.</string>
 
     <!--travel-->
@@ -52,34 +54,58 @@
     <string name="_to">To</string>
     <string name="_modeOfTransportation">Mode Of Transportation</string>
     <string name="_listOfRoutes">List of routes available</string>
-    <string name="_doYouWantToTest">Do you want to check your knowledge ?</string>
+    <string name="_detailsOfRoute">Details of Route</string>
+    <string name="_doYouWantToTest">Check your knowledge?</string>
     <string name="_whereDoYouToTravel">Where do you want to travel?</string>
     <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros,
                             pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus.
                             Donec scelerisque sollicitudin enim eu venenatis. </string>
 
+    <string name="_startaddress">Start Address : </string>
+    <string name="_endaddress">End Address : </string>
+    <string name="_arrivalTime">Arrival Time : </string>
+    <string name="departure_time">Departure Time : </string>
+    <string name="distance">Distance : </string>
+    <string name="duration">Duration : </string>
+    <string name="summary">Summary : </string>
+    <string name="warnings_title">Warnings : </string>
+    <string name="_mapView">Map View</string>
+
+    <string name="_noStartAdd">No start address</string>
+    <string name="_noEndAdd">No end address</string>
+    <string name="_noarrivalTime">No arrival time</string>
+    <string name="_nodepartureTime">No departure time</string>
+    <string name="_noDistance">No distance time</string>
+    <string name="_noduration">No duration time</string>
+    <string name="_noSummary">No summary</string>
+    <string name="_noWarnings">No warnnings</string>
+
     <string-array name="travelOption">
-        <item>Walk</item>
-        <item>Railway</item>
-        <item>Bicycle</item>
-        <item>Car</item>
-        <item>Bus</item>
+        <item>transit</item>
+        <item>driving</item>
+        <item>walking</item>
+        <item>cycling</item>
+    </string-array>
+
+    <string-array name="travelOption_name">
+        <item>Transit</item>
+        <item>Driving</item>
+        <item>Walking</item>
+        <item>Cycling</item>
     </string-array>
 
     <!--menu title-->
     <string name="_skip">SKIP</string>
     <string name="_home">Home</string>
     <string name="_travel">Travel</string>
-    <string name="_trafficSignals">Traffic Signals Guide</string>
+    <string name="_trafficSignals">Traffic and Road Signs</string>
     <string name="_airports">Airports</string>
     <string name="_bins">Bins</string>
-    <string name="_groceryShops">Grocery Store</string>
     <string name="_currency">Currency Guide</string>
     <string name="_wasteManage">Waste Management</string>
-    <string name="_accomodationsFinder">Accommodation</string>
-    <string name="_nhs">NHS near by</string>
-    <string name="_niNo">NI number guidelines</string>
-    <string name="_famousSpots">Famous Spots In UK</string>
+    <string name="_nhs">NHS Registration</string>
+    <string name="_nearbyPlaces">Nearby Places</string>
+    <string name="_placeDetail">Place Details</string>
     <string name="_AreYouLookingForFamousSpot">Are you looking for Famous Spot?</string>
     <string name="_logout">Logout</string>
     <string name="navigation_drawer_open">Drawer Open</string>
@@ -89,9 +115,9 @@
     <string name="contactUs">Contact Us</string>
     <string name="terms_condition">Terms of Service</string>
     <string name="privacy_policy">Privacy Policy</string>
-    <string name="_coin">Coin</string>
+    <string name="_coin">Coins</string>
     <string name="_notes">Notes</string>
-    <string name="_congratulation">Congratulation</string>
+    <string name="_congratulation">Congratulations</string>
     <string name="_yourscore">Your Score</string>
     <string name="_backToHome">Back To Home</string>
     <string name="_score"> %1$s / 10</string>
@@ -106,7 +132,9 @@
     <string name="please_enter_your_phoneNo">Please enter your phone no</string>
     <string name="please_enter_your_birthdate">Please enter your birth date</string>
     <string name="please_enter_your_first_name">Please enter your first name</string>
+    <string name="please_enter_your_valid_first_name">Please enter your valid first name</string>
     <string name="please_enter_your_last_name">Please enter your last name</string>
+    <string name="please_enter_your_valid_last_name">Please enter your valid last name</string>
     <string name="please_enter_your_email_address">Please enter your email address</string>
     <string name="please_enter_valid_email_address">Please enter a valid email</string>
     <string name="please_enter_password">Please enter password</string>
@@ -128,9 +156,52 @@
     <string name="select_image">Select Image</string>
     <string name="allow_permission_settings">Allow permission settings</string>
     <string name="settings">Settings</string>
+    <string name="_plzSelectLocation">Please select "/From/" and "/To/" location for map view. Thank You!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="go_back">Go Back</string>
+    <string name="str_btn_find">Find</string>
+
+    <string-array name="place_type">
+        <item>null</item>
+        <item>atm</item>
+        <item>bank</item>
+        <item>bus_station</item>
+        <item>church</item>
+        <item>doctor</item>
+        <item>hospital</item>
+        <item>supermarket</item>
+        <item>bakery</item>
+        <item>bar</item>
+        <item>cafe</item>
+        <item>restaurant</item>
+        <item>beauty_salon</item>
+        <item>fire_station</item>
+    </string-array>
+
+    <string-array name="place_type_name">
+        <item>Select Place</item>
+        <item>Cash Machine</item>
+        <item>Bank</item>
+        <item>Bus Station</item>
+        <item>Church</item>
+        <item>GP Surgery</item>
+        <item>Hospital</item>
+        <item>Grocery Stores</item>
+        <item>Bakery</item>
+        <item>Bar</item>
+        <item>Cafe</item>
+        <item>Restaurant</item>
+        <item>Beauty Salon</item>
+        <item>Fire Station</item>
+    </string-array>
+
+
+    <string name="_nhsText2"> (All rights to the link are reserved by <a href="http://www.nhs.uk/"> NHS </a>) </string>
+    <string name="_nhsText">Any person living in England can register themselves with GP Surgery.
+There is no need of immigration status, ID or any address proof or NHS number to register with GP Surgery.
+One can also register with the GP not in the nearby area. Further details regarding the procedure can be found in the below link taking you to NHS website. Find out about registering with a GP surgery out of your area
+       </string>
 
 </resources>

@@ -15,4 +15,4 @@ Not : This project code is not copy from any where and also This is already subm
 
 You can connect with me on:
 
-- Github : https://www.linkedin.com/in/hardi-r/
+- LinkedIn : https://www.linkedin.com/in/hardi-r/

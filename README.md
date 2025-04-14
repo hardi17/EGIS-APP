@@ -10,7 +10,9 @@ Purpose of this project :
     Using this application student easily get the idea about TFL and all route which covered by TFL and also you will get near by bus stations.
     Fun part from this application we added small quiz, so you can take a part into that and get a pass or failed result based on your pssing score.
     
-You can connect with me on:
+## Hi there! 👋
+I’m Hardi Rachh, an experienced Android developer who loves exploring new frameworks and tools.
+Always open to connect and collaborate, feel free to reach out to me on: 😊
 
 - LinkedIn : https://www.linkedin.com/in/hardi-r/
 - Medium : https://hardirachh.medium.com/
